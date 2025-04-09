@@ -8,6 +8,17 @@
   <link href="https://fonts.googleapis.com/css2?family=TT+Drugs&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dream+Avenue&display=swap" rel="stylesheet">
   <style>
+.gallery-grid img {
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #a020f0;
+}
+
+
     input::placeholder,
     textarea::placeholder {
       color: white;
@@ -82,22 +93,11 @@
     * {
       transition: all 0.4s ease;
     }
-    .hero img,
-    .about img,
-    .gallery-grid img,
-    iframe,
-    nav a {
-      transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-    }
+    
     nav a:hover {
       transform: scale(1.1);
     }
-    .gallery-grid img:hover,
-    .about img:hover,
-    .hero img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px #a020f0;
-    }
+    
     iframe:hover {
       transform: scale(1.02);
       box-shadow: 0 0 40px #a020f0;
@@ -122,6 +122,71 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+@media (max-width: 768px) {
+  section {
+    padding: 100px 5%;
+  }
+
+  .about,
+  .contatti {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about img,
+  .contatti img {
+    width: 80%;
+    margin: 40px auto 0;
+  }
+
+  .about div,
+  .contatti div {
+    max-width: 100%;
+  }
+
+  .contatti {
+    align-items: center;
+  }
+
+  .hero img {
+    width: 90% !important;
+  }
+
+  h1 {
+    font-size: 36px !important;
+  }
+
+  h2 {
+    font-size: 24px !important;
+  }
+
+  .players {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+  }
+
+  nav {
+    padding: 10px 0;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 14px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 </head>
 <body onscroll="handleScroll()">
