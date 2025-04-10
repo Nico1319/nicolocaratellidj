@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicolò Caratelli DJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=TT+Drugs&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dream+Avenue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      background-color: #0e0b0b;
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      scroll-behavior: smooth;
+    }
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-family: 'TTDrugs', sans-serif;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #a020f0;
+    }
+    .mobile-menu-toggle,
+    .mobile-links {
+      display: none;
+    }
+    section {
+      padding: 150px 10%;
+    }
+    
+    @media (max-width: 768px) {
+      nav a {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 10px;
+      }
+      .mobile-links {
+        display: none;
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      .mobile-links a {
+        display: block;
+        margin: 5px 0;
+      }
+      .mobile-links.open {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+      }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  .large-3 {
+    top: 1800px;
+    left: -25%;
+    width: 1400px;
+    transform: rotate(15deg);
+  }
+  .large-4 {
+    top: 3600px;
+    right: -20%;
+    width: 1500px;
+    transform: rotate(-18deg);
+  }
+@media (max-width: 768px) {
+  .hero img[alt='Logo'] {
+    width: 80% !important;
+    max-width: 300px !important;
+  }
+  .hero p {
+    font-size: 16px !important;
+  }
+  .about {
+    flex-direction: column !important;
+    text-align: center !important;
+    margin-top: -120px !important;
+    gap: 40px;
+  }
+  .about img {
+    width: 80% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .about h1 {
+    font-size: 36px !important;
+  }
+  .about p {
+    font-size: 16px !important;
+  }
+  .about h2 {
+    font-size: 20px !important;
+  }
+  .large-3, .large-4 {
+    width: 1000px !important;
+  }
+}
+</style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+      const toggle = document.getElementById("mobile-toggle");
+      const links = document.getElementById("mobile-links");
+      if (toggle && links) {
+        toggle.addEventListener("click", () => links.classList.toggle("open"));
+      }
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="mobile-menu-toggle" id="mobile-toggle">☰ Menu</div>
+    <div class="mobile-links" id="mobile-links">
+      <a href="#about">Chi sono</a>
+      <a href="#produzioni">Produzioni</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#eventi">Eventi</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+    <div class="desktop-links">
+      <a href="#about">Chi sono</a>
+      <a href="#produzioni">Produzioni</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#eventi">Eventi</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="home" data-animate style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative;">
+  <img class="bg-graphic" src="Grafica_ad_3png.png" alt="grafica hero" style="position: absolute; top: 0; left: -25%; width: 2000px; transform: rotate(-12deg); z-index: -1;">
+  
+  <img src="logo-bianco.svg" alt="Logo" style="width: 60%; max-width: 500px; filter: drop-shadow(0 0 20px #a020f0);">
+  <p style="margin-top: 20px; font-size: 20px; color: white; font-family: 'Quicksand', sans-serif;">Un viaggio musicale raffinato, energico e senza compromessi.</p>
+</section>
+
+  <section class="about" id="about" data-animate style="margin-top: -240px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="max-width: 55%;">
+      <h2 style="font-family: 'TTDrugs', sans-serif; font-size: 32px; color: #a020f0;">ABOUT ME</h2>
+      <h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; line-height: 1.2;">SONO UN<br>GIOVANE DJ<br>CON 3 ANNI DI<br>ESPERIENZA,<br>BASATO A ROMA.</h1>
+      <p style="font-family: 'Quicksand', sans-serif; font-size: 22px; line-height: 1.6;">“Faccio ballare le persone,<br>creo emozioni attraverso<br>la musica.”</p>
+    </div>
+    <img src="IMG_6644-Photoroom.png" alt="DJ profile image" style="width: 40%; filter: drop-shadow(0 0 25px #a020f0);">
+  </section>
+
+  <section class="produzioni" id="produzioni" data-animate style="text-align: center;">
+    <h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: right;">PRODUCTION</h2>
+    <h1 style="font-family: 'DreamAvenue', serif; font-size: 80px; text-align: right;">LE MIE<br>TRACCE, IL MIO<br>SUONO.</h1>
+    <div class="players">
+      <div style="position: relative; display: inline-block; margin-bottom: 40px;">
+  <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border-radius: 20px; box-shadow: 0 0 60px 20px rgba(160,32,240,0.3); z-index: 0;"></div>
+  <iframe src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/the-trekkindiver/fuorilegge-rose-villain-sanremo-2025-afro-remix-copyright-filtered&color=%23ffffff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true" style="width: 500px; height: 260px; border: none; border-radius: 20px; position: relative; z-index: 1; box-shadow: 0 0 30px rgba(160,32,240,0.4);" allow="autoplay"></iframe>
+</div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="position: relative; display: inline-block; margin-top: 40px;">
+  <div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border-radius: 20px; box-shadow: 0 0 60px 20px rgba(160,32,240,0.3); z-index: 0;"></div>
+  <iframe src="https://www.youtube.com/embed/W0WIvX4MJfg" style="width: 500px; height: 260px; border: none; border-radius: 20px; position: relative; z-index: 1; box-shadow: 0 0 30px rgba(160,32,240,0.4);" allowfullscreen></iframe>
+</div>
+        <p style="margin-top: 20px; font-size: 34px; font-weight: bold; line-height: 1.4; text-align: center;">
+          <strong style="color: #a020f0;">Anema e core remix</strong> ha raggiunto quasi <strong>50.000 ascolti</strong> su YouTube!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery" data-animate style="text-align: center;">
+    <h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: left;">GALLERY</h2>
+    <h1 style="font-family: 'DreamAvenue', serif; font-size: 80px;">LA MIA MUSICA,<br>I MIEI MOMENTI</h1>
+    <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+      <img src="1000156423.jpg" alt="Foto 1" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+      <img src="IMG_8075.JPG" alt="Foto 2" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+      <img src="IMG_0468.JPG" alt="Foto 3" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+      <img src="IMG_8074.JPG" alt="Foto 4" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+      <img src="1000156425.jpg" alt="Foto 5" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+      <img src="IMG_6643.JPG" alt="Foto 6" style="width: 100%; box-shadow: 0 0 30px #a020f0;">
+    </div>
+  </section>
+
+  <section class="contatti" id="contatti" data-animate style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="max-width: 50%;">
+      <h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; line-height: 1.2;">VUOI PORTARE IL MIO SOUND<br>NEL TUO EVENTO?</h1>
+      <p style="font-size: 20px;">Per richieste booking, collaborazioni musicali o informazioni, compila il form o scrivimi direttamente.</p>
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 28px; vertical-align: middle; margin-right: 10px;"> nicolocaratellidj</p>
+      <p><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="TikTok" style="width: 28px; vertical-align: middle; margin-right: 10px; background: white; border-radius: 50%;"> nicolocaratellidj</p>
+    </div>
+    <div style="width: 45%;">
+      <h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: right;">BOOKING</h2>
+      <form action="https://formspree.io/f/xaneanjq" method="POST" style="display: flex; flex-direction: column; gap: 30px;">
+        <input type="text" name="nome" placeholder="nome e cognome" required>
+        <input type="email" name="email" placeholder="mail" required>
+        <textarea name="messaggio" placeholder="messaggio" rows="5" required></textarea>
+        <button type="submit">Invia</button>
+      </form>
+      <div id="form-success" style="display: none; margin-top: 20px; color: #a020f0; text-align: center;">Grazie per avermi contattato! Ti risponderò al più presto.</div>
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 30px 0; background-color: #0e0b0b; font-size: 14px; color: #888; position: relative; z-index: 1;">
+    © 2025 Nicolò Caratelli DJ. Tutti i diritti riservati. Realizzato con passione e musica.
+  </footer>
+  
+
+
+</style>
+<style>
+  .bg-graphic {
+    position: absolute;
+    z-index: -1;
+    opacity: 1;
+    pointer-events: none;
+  }
+</style>
+<img class="bg-graphic large-3" src="Grafica_ad_2png.png" alt="grafica" style="top: 1600px; left: -10%; width: 1500px; transform: rotate(12deg);">
+<img class="bg-graphic large-4" src="grfica_bs_5png.png" alt="grafica" style="top: 2800px; right: -10%; width: 1500px; transform: rotate(-14deg);">
+
+
+</body>
+</html>
