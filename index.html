@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/><link href="/favicon-32x32.png" rel="icon" type="image/png"/><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DJ a Roma per Eventi | Nicolò Caratelli DJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=TT+Drugs&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Dream+Avenue&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin: 0;
+      background-color: #0e0b0b;
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      scroll-behavior: smooth;
+    }
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-family: 'TTDrugs', sans-serif;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #a020f0;
+    }
+    .mobile-menu-toggle,
+    .mobile-links {
+      display: none;
+    }
+    section {
+      padding: 150px 10%;
+    }
+    
+    @media (max-width: 768px) {
+  .social {
+    flex-direction: column-reverse !important;
+    text-align: center !important;
+    gap: 40px;
+    align-items: center !important;
+  }
+  .social img {
+    width: 80% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .social div {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .contatti {
+    flex-direction: column-reverse !important;
+    gap: 40px;
+    align-items: center !important;
+  }
+  .contatti > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .contatti {
+    flex-direction: column-reverse !important;
+    gap: 40px;
+    align-items: center !important;
+  }
+  .contatti > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+      nav a {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 10px;
+      }
+      .mobile-links {
+        display: none;
+        flex-direction: column;
+        margin-top: 10px;
+      }
+      .mobile-links a {
+        display: block;
+        margin: 5px 0;
+      }
+      .mobile-links.open {
+        display: flex;
+        animation: slideDown 0.3s ease forwards;
+      }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  .large-3 {
+    top: 1800px;
+    left: -25%;
+    width: 1400px;
+    transform: rotate(15deg);
+  }
+  .large-4 {
+    top: 3600px;
+    right: -20%;
+    width: 1500px;
+    transform: rotate(-18deg);
+  }
+@media (max-width: 768px) {
+  .bg-graphic {
+    display: none !important;
+  }
+  .hero img[alt='Logo'] {
+    width: 80% !important;
+    max-width: 300px !important;
+  }
+  .hero p {
+    font-size: 16px !important;
+  }
+  .about {
+    flex-direction: column !important;
+    text-align: center !important;
+    margin-top: -120px !important;
+    gap: 40px;
+  }
+  .about img {
+    width: 80% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .about h1 {
+    font-size: 36px !important;
+  }
+  .about p {
+    font-size: 16px !important;
+  }
+  .about h2 {
+    font-size: 20px !important;
+  }
+  .large-3, .large-4 {
+    width: 1000px !important;
+  }
+}
+@media (max-width: 768px) {
+  .hero img[alt='Logo'] {
+    width: 80% !important;
+    max-width: 300px !important;
+  }
+  .hero p {
+    font-size: 16px !important;
+  }
+  .about {
+    flex-direction: column !important;
+    text-align: center !important;
+    margin-top: -120px !important;
+    gap: 40px;
+  }
+  .about img {
+    width: 80% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .about h1 {
+    font-size: 32px !important;
+  }
+  .about p {
+    font-size: 14px !important;
+  }
+  .about h2 {
+    font-size: 18px !important;
+  }
+  .players iframe {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+  }
+  .players div {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .contatti {
+    flex-direction: column-reverse !important;
+    gap: 40px;
+  }
+  .contatti > div {
+    width: 100% !important;
+    text-align: center;
+  }
+}
+  a:hover {
+    color: #a020f0 !important;
+    transform: scale(1.05);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  .scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: #a020f0;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  section {
+    padding: 80px 20px !important;
+  }
+  h1, h2, p {
+    text-align: center !important;
+  }
+  .hero img[alt='Logo'] {
+    width: 80% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .gallery-grid {
+    gap: 20px !important;
+  }
+  .players iframe {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+  }
+  .players div {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .about, .social, .contatti {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 40px;
+  }
+  .about img, .social img, .contatti img {
+    width: 80% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .about > div, .social > div, .contatti > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+
+  .social a img {
+    width: 50px !important;
+    height: auto !important;
+  }
+
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
+  }
+  section {
+    padding: 60px 20px !important;
+    text-align: center !important;
+  }
+  h1, h2, h3, p {
+    text-align: center !important;
+    word-wrap: break-word;
+  }
+  .hero p,
+  .about p,
+  .social p,
+  .nuove-uscite p,
+  .contatti p {
+    padding: 0 10px !important;
+  }
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto !important;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .players div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .social > div,
+  .about > div,
+  .contatti > div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+      const toggle = document.getElementById("mobile-toggle");
+      const links = document.getElementById("mobile-links");
+      if (toggle && links) {
+        toggle.addEventListener("click", () => links.classList.toggle("open"));
+      }
+    });
+  </script>
+<meta content="Scopri Nicolò Caratelli, DJ a Roma per eventi privati, matrimoni, locali e feste. Esperienza, energia e musica senza compromessi. Contattami ora!" name="description"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Nicolò Caratelli", "jobTitle": "DJ", "address": {"@type": "PostalAddress", "addressLocality": "Roma", "addressCountry": "IT"}, "sameAs": ["https://www.instagram.com/nicolocaratellidj", "https://www.tiktok.com/@nicolocaratellidj"]}</script></head>
+<body>
+<nav>
+<div class="mobile-menu-toggle" id="mobile-toggle">☰ Menu</div>
+<div class="mobile-links" id="mobile-links">
+<a href="#about">Chi sono</a>
+<a href="#produzioni">Produzioni</a>
+<a href="#nuove-uscite">Nuove Uscite</a>
+<a href="#gallery">Gallery</a>
+<a href="#social">Social</a>
+<a href="#contatti">Contatti</a>
+</div>
+<div class="desktop-links">
+<a href="#about">Chi sono</a>
+<a href="#produzioni">Produzioni</a>
+<a href="#nuove-uscite">Nuove Uscite</a>
+<a href="#gallery">Gallery</a>
+<a href="#social">Social</a>
+<a href="#contatti">Contatti</a>
+</div>
+</nav>
+<section class="hero" data-animate="" id="home" style="height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative;">
+<img alt="Logo" src="logo-bianco.svg" style="width: 75%; max-width: 600px; filter: drop-shadow(0 0 30px #a020f0); margin: -60px auto 0;"/>
+<p style="margin-top: 20px; font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; color: white; font-family: 'Quicksand', sans-serif;">Un viaggio musicale raffinato, energico e senza compromessi.</p>
+</section>
+<section class="about" data-animate="" id="about" style="margin-top: -240px; display: flex; justify-content: space-between; align-items: center;">
+<div style="max-width: 55%;">
+<h2 style="font-family: 'TTDrugs', sans-serif; font-size: 32px; color: #a020f0;">ABOUT ME</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; line-height: 1.2;">SONO UN<br/>GIOVANE DJ<br/>CON 3 ANNI DI<br/>ESPERIENZA,<br/>BASATO A ROMA.</h1>
+<p style="font-family: 'Quicksand', sans-serif; font-size: 22px; line-height: 1.6;">“Faccio ballare le persone,<br/>creo emozioni attraverso<br/>la musica.”</p>
+</div>
+<img alt="DJ profile image" src="IMG_6644-Photoroom.png" style="width: 40%; filter: drop-shadow(0 0 25px #a020f0);"/>
+<h1 style="font-size: 28px; color: #a020f0; margin-top: 20px;">DJ per Eventi a Roma – Nicolò Caratelli</h1></section>
+<section class="produzioni" data-animate="" id="produzioni" style="text-align: center;">
+<h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: right;">PRODUCTION</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 80px; text-align: right;">LE MIE<br/>TRACCE, IL MIO<br/>SUONO.</h1>
+<div class="players">
+<div style="position: relative; display: inline-block; margin-bottom: 40px;">
+<div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border-radius: 20px; box-shadow: 0 0 60px 20px rgba(160,32,240,0.3); z-index: 0;"></div>
+<iframe allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/the-trekkindiver/fuorilegge-rose-villain-sanremo-2025-afro-remix-copyright-filtered&amp;color=%23ffffff&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true" style="width: 500px; height: 260px; border: none; border-radius: 20px; position: relative; z-index: 1; box-shadow: 0 0 30px rgba(160,32,240,0.4);"></iframe>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center;">
+<div style="position: relative; display: inline-block; margin-top: 40px;">
+<div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border-radius: 20px; box-shadow: 0 0 60px 20px rgba(160,32,240,0.3); z-index: 0;"></div>
+<iframe allowfullscreen="" src="https://www.youtube.com/embed/W0WIvX4MJfg" style="width: 500px; height: 260px; border: none; border-radius: 20px; position: relative; z-index: 1; box-shadow: 0 0 30px rgba(160,32,240,0.4);"></iframe>
+</div>
+<p style="margin-top: 20px; font-size: 34px; font-weight: bold; line-height: 1.4; text-align: center;">
+<strong style="color: #a020f0;">Anema e core remix</strong> ha raggiunto quasi <strong>50.000 ascolti</strong> su YouTube!
+        </p>
+</div>
+</div>
+</section>
+<section class="nuove-uscite" data-animate="" id="nuove-uscite" style="text-align: center; margin-top: 100px;">
+<h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: right;">NUOVE USCITE</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 80px; text-align: right;">LE ULTIME<br/>NOVITÀ<br/>MUSICALI</h1>
+<p style="font-family: 'Quicksand', sans-serif; font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; color: white; max-width: 800px; margin: 20px auto; text-align: right;">
+      In questa sezione puoi ascoltare l’ultima produzione uscita. Nuove tracce vengono pubblicate regolarmente,
+      resta aggiornato seguendomi sui social!
+    </p>
+<div class="players" style="margin-top: 60px;">
+<div style="position: relative; display: inline-block; margin-bottom: 40px;">
+<div style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+                    border-radius: 20px; box-shadow: 0 0 60px 20px rgba(160,32,240,0.3); z-index: 0;">
+</div>
+<iframe allowfullscreen="" height="260" src="https://www.youtube.com/embed/f7DDq1Wrg38" style="border: none; border-radius: 20px; position: relative; z-index: 1;
+                 box-shadow: 0 0 30px rgba(160,32,240,0.4);" width="500">
+</iframe>
+</div>
+</div>
+</section>
+<section class="servizi" data-animate="" id="servizi" style="text-align: center; padding: 100px 10%;"><h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px;">SERVIZI OFFERTI</h2><h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; margin-bottom: 40px;">LA MUSICA PER OGNI OCCASIONE</h1><ul style="list-style: none; padding: 0; max-width: 700px; margin: 0 auto 50px; font-size: 22px; line-height: 1.8; font-family: 'Quicksand', sans-serif;"><li>🎧 DJ per eventi privati, aziendali e inaugurazioni</li><li>🎉 DJ per feste private e locali notturni</li><li>🔊 Affitto impianto audio/luci su richiesta</li><li>✨ E molto altro ancora…</li></ul><a href="#contatti" style="padding: 14px 32px; background: rgba(160,32,240,0.15); border: 1px solid #a020f0; border-radius: 40px; color: white; font-size: 22px; font-weight: 600; font-family: 'TTDrugs', sans-serif; text-decoration: none; box-shadow: 0 0 15px rgba(160,32,240,0.4); transition: background 0.3s ease;" target="_self">Richiedi Preventivo</a></section><section class="gallery" data-animate="" id="gallery" style="text-align: center;">
+<h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: left;">GALLERY</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 80px;">LA MIA MUSICA,<br/>I MIEI MOMENTI</h1>
+<div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+<img alt="Nicolò Caratelli DJ a Roma - Evento 1" src="1000156423.jpg" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+<img alt="Nicolò Caratelli DJ a Roma - Evento 2" src="IMG_8075.JPG" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+<img alt="Nicolò Caratelli DJ a Roma - Evento 3" src="IMG_0468.JPG" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+<img alt="Nicolò Caratelli DJ a Roma - Evento 4" src="IMG_8074.JPG" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+<img alt="Nicolò Caratelli DJ a Roma - Evento 5" src="1000156425.jpg" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+<img alt="Nicolò Caratelli DJ a Roma - Evento 6" src="IMG_6643.JPG" style="width: 100%; box-shadow: 0 0 30px #a020f0;"/>
+</div>
+</section>
+<section class="social" data-animate="" id="social" style="margin-top: -80px; display: flex; justify-content: space-between; align-items: center;">
+<img alt="DJ al lavoro" src="IMG_8071-removebg-preview.png" style="width: 40%; filter: drop-shadow(0 0 40px #a020f0);"/>
+<div style="max-width: 55%; text-align: right;">
+<h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px;">SOCIAL</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; line-height: 1.2;">RESTIAMO<br/>IN CONTATTO</h1>
+<p style="font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; font-family: 'Quicksand', sans-serif; margin-bottom: 40px;">Seguimi sui social per rimanere aggiornato su nuovi eventi, remix esclusivi e momenti live. La mia community cresce ogni giorno e tu puoi farne parte!</p>
+<div style="display: flex; justify-content: flex-end; gap: 20px; flex-wrap: wrap;">
+<a href="https://www.instagram.com/nicolocaratellidj" style="padding: 12px 30px; background: rgba(160,32,240,0.15); border: 1px solid #a020f0; border-radius: 40px; color: white; font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; font-family: 'TTDrugs', sans-serif; text-decoration: none; box-shadow: 0 0 15px rgba(160,32,240,0.4); transition: background 0.3s ease;" target="_blank">
+<img alt="Instagram" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width: 24px; vertical-align: middle; margin-right: 10px;"/>Instagram
+      </a>
+<a href="https://www.tiktok.com/@nicolocaratellidj" style="padding: 12px 30px; background: rgba(160,32,240,0.15); border: 1px solid #a020f0; border-radius: 40px; color: white; font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; font-family: 'TTDrugs', sans-serif; text-decoration: none; box-shadow: 0 0 15px rgba(160,32,240,0.4); transition: background 0.3s ease;" target="_blank">
+<img alt="TikTok" src="tiktok-logo-tikok-icon-transparent-tikok-app-logo-free-png.webp" style="width: 24px; vertical-align: middle; margin-right: 10px;"/>TikTok
+      </a>
+</div>
+</div>
+</section>
+<img alt="grafica decorativa" class="bg-graphic" src="grfica_bs_5png.png" style="position: absolute; top: 4350px; left: 5%; width: 1400px; transform: rotate(10deg); z-index: -1;"/>
+<section class="contatti" data-animate="" id="contatti" style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div style="max-width: 50%;">
+<h2 style="font-family: 'TTDrugs', sans-serif; color: #a020f0; font-size: 32px; text-align: left;">BOOKING</h2>
+<h1 style="font-family: 'DreamAvenue', serif; font-size: 64px; line-height: 1.2;">VUOI PORTARE IL MIO SOUND<br/>NEL TUO EVENTO?</h1>
+<p style="font-size: 24px; font-weight: 600; line-height: 1.4; text-align: center; max-width: 600px;">Per richieste booking, collaborazioni musicali o informazioni, compila il form o scrivimi direttamente.</p>
+</div>
+<div style="width: 45%;">
+<form action="https://formspree.io/f/xaneanjq" method="POST" style="display: flex; flex-direction: column; gap: 30px; max-width: 600px; width: 100%; margin-top: 120px;">
+<input name="nome" placeholder="nome e cognome" required="" type="text"/>
+<input name="email" placeholder="mail" required="" type="email"/>
+<textarea name="messaggio" placeholder="messaggio" required="" rows="5"></textarea>
+<button type="submit">Invia</button>
+</form>
+<div id="form-success" style="display: none; margin-top: 20px; color: #a020f0; text-align: center;">Grazie per avermi contattato! Ti risponderò al più presto.</div>
+</div>
+</section>
+
+<footer style="text-align: center; padding: 30px 0; background-color: #0e0b0b; font-size: 14px; color: #888; position: relative; z-index: 1;">
+    © 2025 Nicolò Caratelli DJ. Tutti i diritti riservati. Realizzato con passione e musica.
+  </footer>
+<img alt="grafica sotto contatti" class="bg-graphic" src="grafica_bs_4png.png" style="position: absolute; top: 4900px; left: 10%; width: 1400px; transform: rotate(6deg); z-index: -1;"/>
+  
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  section {
+    padding: 80px 20px !important;
+  }
+  h1, h2, p {
+    text-align: center !important;
+  }
+  .hero img[alt='Logo'] {
+    width: 80% !important;
+    max-width: 280px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .gallery-grid {
+    gap: 20px !important;
+  }
+  .players iframe {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+  }
+  .players div {
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .about, .social, .contatti {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 40px;
+  }
+  .about img, .social img, .contatti img {
+    width: 80% !important;
+    max-width: 300px !important;
+    height: auto !important;
+    margin: 0 auto;
+  }
+  .about &gt; div, .social &gt; div, .contatti &gt; div {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+
+  .social a img {
+    width: 50px !important;
+    height: auto !important;
+  }
+
+
+<img alt="grafica" class="bg-graphic" src="grafica_bs_4png.png" style="position: absolute; top: 800px; left: -35%; width: 1500px; transform: rotate(5deg); z-index: -1;"/>
+<img alt="grafica" class="bg-graphic" src="Grafica_db_3png.png" style="position: absolute; top: 3700px; right: -15%; width: 1500px; transform: rotate(-12deg); z-index: -1;"/>
+<img alt="grafica" class="bg-graphic" src="grfica_bs_5png.png" style="position: absolute; top: 2600px; left: 25%; width: 1400px; transform: rotate(8deg); z-index: -1;"/>
+<img alt="grafica alta destra" class="bg-graphic" src="grafica_alto_as_2png.png" style="position: absolute; top: -300px; right: -20%; width: 1400px; transform: rotate(10deg); z-index: -1;"/>
+<img alt="grafica bassa sinistra" class="bg-graphic" src="Grafica_ad_2png.png" style="position: absolute; bottom: -2000px; left: -30%; width: 1400px; transform: rotate(-15deg); z-index: -1;"/>
+<button class="scroll-to-top" id="scrollToTop">↑</button>
+<script>
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  window.addEventListener('scroll', () => {
+    scrollToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  const form = document.querySelector('form');
+  const successMessage = document.getElementById('form-success');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        successMessage.style.display = 'block';
+        form.reset();
+      }
+    });
+  });
+</script>
+<img alt="grafica finale" class="bg-graphic" src="grafica_fondo_extra.png" style="position: absolute; bottom: -2500px; right: -25%; width: 1500px; transform: rotate(10deg); z-index: -1;"/>
+</body>
+</html>
