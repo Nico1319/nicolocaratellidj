@@ -1,10 +1,8 @@
 import { Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-
 export function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const bgRef = useRef<HTMLImageElement>(null);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -12,21 +10,12 @@ export function Hero() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden"
-    >
+  return <section id="home" className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
       {/* Background with parallax */}
       <div className="absolute inset-0 z-0">
-        <img
-          ref={bgRef}
-          src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?q=80&w=2000&auto=format&fit=crop"
-          alt="DJ Background"
-          className="w-full h-full object-cover opacity-40 scale-105"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-        />
+        <img ref={bgRef} alt="DJ Background" className="w-full h-full object-cover opacity-40 scale-105" style={{
+        transform: `translateY(${scrollY * 0.3}px)`
+      }} src="/lovable-uploads/a93832e9-6659-46a7-ba57-d7b70e083718.jpg" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
         <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
       </div>
@@ -55,20 +44,13 @@ export function Hero() {
 
         {/* CTAs */}
         <div className="animate-fade-up animation-delay-300 flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#contact"
-            className="bg-foreground text-background px-8 py-4 rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300"
-          >
+          <a href="#contact" className="bg-foreground text-background px-8 py-4 rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300">
             Richiedi Disponibilità
           </a>
-          <a
-            href="#music"
-            className="bg-foreground/10 backdrop-blur-md text-foreground border border-border/30 px-8 py-4 rounded-full font-semibold text-sm hover:bg-foreground/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.03]"
-          >
+          <a href="#music" className="bg-foreground/10 backdrop-blur-md text-foreground border border-border/30 px-8 py-4 rounded-full font-semibold text-sm hover:bg-foreground/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.03]">
             <Play className="w-4 h-4 fill-current" /> Demo Mix
           </a>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 }
