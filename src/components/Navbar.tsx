@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Disc3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "Chi Sono" },
-  { href: "#music", label: "Musica" },
+  { href: "#story", label: "La Mia Storia" },
+  { href: "#about", label: "Competenze" },
+  { href: "#services", label: "Servizi" },
   { href: "#events", label: "Eventi" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Contatti" },
 ];
 
 export function Navbar() {
@@ -24,67 +23,89 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled ? "glass border-b border-border/50" : "bg-transparent"
-      )}
-    >
-      <nav className="container-wide px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+          scrolled && "glass-nav"
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#home"
-            className="text-xl font-semibold tracking-tight text-foreground hover:text-primary transition-colors"
-          >
-            DJ MARCO
+          <a href="#" className="flex items-center gap-2 z-50">
+            <div className="w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center">
+              <Disc3 className="w-5 h-5 animate-spin-slow" />
+            </div>
+            <span className="font-semibold tracking-tight text-foreground text-sm">
+              Nicolò Caratelli
+            </span>
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-1 glass-pill px-1 py-1 rounded-full absolute left-1/2 -translate-x-1/2">
+            {navLinks.map((link, index) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+                className={cn(
+                  "px-5 py-2 text-xs font-medium rounded-full transition-all",
+                  index === 0
+                    ? "text-foreground hover:bg-foreground/10"
+                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/10"
+                )}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
-          </div>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground"
-            aria-label="Toggle menu"
+          {/* CTA & Mobile Menu Button */}
+          <div className="flex items-center gap-4 z-50">
+            <a
+              href="#contact"
+              className="hidden md:flex items-center gap-2 bg-foreground text-background text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-foreground/90 transition-all hover:scale-105"
+            >
+              Book Now
+            </a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-foreground"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      <div
+        className={cn(
+          "fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-8 transition-opacity duration-500 md:hidden",
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        {navLinks.map((link, index) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={() => setIsOpen(false)}
+            className={cn(
+              "text-3xl font-bold transition-colors",
+              index === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            )}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div
-          className={cn(
-            "md:hidden overflow-hidden transition-all duration-300",
-            isOpen ? "max-h-96 pb-6" : "max-h-0"
-          )}
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="#contact"
+          onClick={() => setIsOpen(false)}
+          className="text-3xl font-bold text-primary"
         >
-          <div className="flex flex-col gap-4 pt-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </nav>
-    </header>
+          Contact
+        </a>
+      </div>
+    </>
   );
 }

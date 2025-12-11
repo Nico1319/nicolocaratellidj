@@ -1,141 +1,165 @@
-import { useState } from "react";
-import { Send, User, Mail, MessageSquare, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState, useEffect, useRef } from "react";
+import { Mail, Phone } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
+const eventTypes = [
+  "Tipo di Evento",
+  "Lounge Bar / Aperitivo",
+  "Aperiski / Winter Party",
+  "Inaugurazione Commerciale",
+  "Party Privato (18esimo, Laurea)",
+  "Matrimonio",
+  "Altro / Corporate",
+];
+
 export function Contact() {
+  const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    date: "",
     eventType: "",
     message: "",
   });
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     toast({
-      title: "Messaggio Inviato!",
+      title: "Richiesta Inviata!",
       description: "Ti risponderò il prima possibile. Grazie per avermi contattato!",
     });
-    
-    setFormData({ name: "", email: "", eventType: "", message: "" });
+
+    setFormData({ name: "", email: "", date: "", eventType: "", message: "" });
     setIsSubmitting(false);
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary">
-      <div className="container-narrow">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Info */}
-          <div className="animate-fade-up">
-            <p className="text-sm uppercase tracking-[0.2em] text-primary mb-4 font-medium">
-              Contatti
-            </p>
-            <h2 className="text-heading text-foreground mb-6">
-              Prenota il Tuo Evento
-            </h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Stai organizzando un evento privato, una festa aziendale o cerchi un DJ
-              per il tuo club? Compila il form e descrivimi il tuo progetto.
-              Ti risponderò entro 24 ore.
-            </p>
+    <section ref={sectionRef} id="contact" className="py-32 bg-background border-t border-border/30">
+      <div className="container mx-auto px-6 max-w-3xl text-center">
+        <h2
+          className={`text-heading font-bold mb-6 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          Let's work together.
+        </h2>
+        <p
+          className={`text-xl text-muted-foreground mb-12 transition-all duration-700 delay-100 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          Hai un evento in mente? Parliamone.
+        </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <MapPin size={18} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground">Area di Copertura</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Nord Italia, con disponibilità per eventi nazionali e internazionali
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <MessageSquare size={18} className="text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium text-foreground">Tipi di Eventi</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Club nights, festival, eventi privati, matrimoni, corporate events
-                  </p>
-                </div>
-              </div>
-            </div>
+        <form
+          onSubmit={handleSubmit}
+          className={`space-y-4 text-left transition-all duration-700 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              placeholder="Nome"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all"
+            />
           </div>
 
-          {/* Form */}
-          <div className="animate-fade-up animation-delay-200">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="relative">
-                <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  type="text"
-                  placeholder="Il tuo nome"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="pl-12 h-14 bg-background border-border"
-                  required
-                />
-              </div>
-
-              <div className="relative">
-                <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  type="email"
-                  placeholder="La tua email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="pl-12 h-14 bg-background border-border"
-                  required
-                />
-              </div>
-
-              <Input
-                type="text"
-                placeholder="Tipo di evento (es. Club Night, Matrimonio...)"
-                value={formData.eventType}
-                onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                className="h-14 bg-background border-border"
-              />
-
-              <Textarea
-                placeholder="Raccontami del tuo evento: data, location, budget indicativo..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="min-h-[150px] bg-background border-border resize-none"
-                required
-              />
-
-              <Button 
-                type="submit" 
-                variant="gold" 
-                size="xl" 
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  "Invio in corso..."
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Invia Richiesta
-                  </>
-                )}
-              </Button>
-            </form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="date"
+              value={formData.date}
+              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all"
+            />
+            <select
+              value={formData.eventType}
+              onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
+              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all appearance-none"
+            >
+              {eventTypes.map((type) => (
+                <option key={type} value={type === "Tipo di Evento" ? "" : type}>
+                  {type}
+                </option>
+              ))}
+            </select>
           </div>
+
+          <textarea
+            rows={4}
+            placeholder="Messaggio..."
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            required
+            className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all resize-none"
+          />
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-foreground text-background font-bold text-lg py-4 rounded-xl hover:bg-foreground/90 transition-colors mt-4 shadow-[0_0_20px_hsl(0_0%_100%/0.2)] hover:scale-[1.005] disabled:opacity-50"
+          >
+            {isSubmitting ? "Invio in corso..." : "Invia Richiesta"}
+          </button>
+        </form>
+
+        <div
+          className={`mt-20 flex flex-wrap justify-center gap-4 md:gap-8 transition-all duration-700 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          <a
+            href="mailto:djnicolo.caratelli@libero.it"
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-colors border border-border/30 hover:scale-105"
+          >
+            <Mail className="w-5 h-5 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">djnicolo.caratelli@libero.it</span>
+          </a>
+          <a
+            href="https://wa.me/393920712401"
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-colors border border-border/30 hover:scale-105"
+          >
+            <Phone className="w-5 h-5 text-muted-foreground" />
+            <span className="text-sm font-medium text-foreground">+39 392 071 2401</span>
+          </a>
         </div>
       </div>
     </section>
