@@ -1,130 +1,128 @@
-import { Calendar, MapPin, Clock, Ticket } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
 
 const events = [
   {
-    id: 1,
-    date: "21",
-    month: "DIC",
-    title: "Winter Warehouse Party",
-    venue: "Magazzini Generali",
-    city: "Milano",
-    time: "23:00 - 06:00",
-    ticketUrl: "#",
-    isSoldOut: false,
+    day: "25",
+    month: "Oct",
+    title: "Velvet Club",
+    location: "Milano, IT",
+    status: "tickets",
+    highlight: true,
   },
   {
-    id: 2,
-    date: "31",
-    month: "DIC",
-    title: "NYE Exclusive",
-    venue: "Tenax",
-    city: "Firenze",
-    time: "22:00 - 08:00",
-    ticketUrl: "#",
-    isSoldOut: false,
+    day: "31",
+    month: "Oct",
+    title: "Halloween Night",
+    location: "Torino, IT",
+    status: "sold-out",
+    highlight: false,
   },
   {
-    id: 3,
-    date: "12",
-    month: "GEN",
-    title: "Underground Sessions",
-    venue: "Goa Club",
-    city: "Roma",
-    time: "23:30 - 05:00",
-    ticketUrl: "#",
-    isSoldOut: true,
-  },
-  {
-    id: 4,
-    date: "25",
-    month: "GEN",
-    title: "Sunset Festival Opening",
-    venue: "Cocoricò",
-    city: "Riccione",
-    time: "00:00 - 07:00",
-    ticketUrl: "#",
-    isSoldOut: false,
+    day: "12",
+    month: "Nov",
+    title: "Corporate Gala",
+    location: "Bologna, IT",
+    status: "private",
+    highlight: false,
   },
 ];
 
 export function Events() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="events" className="section-padding bg-secondary">
-      <div className="container-narrow">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-up">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary mb-4 font-medium">
-            Eventi
-          </p>
-          <h2 className="text-heading text-foreground mb-6">
-            Prossime Date
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Vieni a ballare ai miei prossimi eventi. 
-            Acquista i biglietti in anticipo per non perdere l'occasione.
-          </p>
-        </div>
+    <section ref={sectionRef} id="events" className="py-32 bg-secondary">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <h2
+          className={`text-center text-heading font-bold mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          Tour Dates.
+        </h2>
 
-        {/* Events List */}
-        <div className="space-y-4">
-          {events.map((event, index) => (
+        <div
+          className={`bg-card rounded-[24px] overflow-hidden border border-border/30 divide-y divide-border/30 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          {events.map((event) => (
             <div
-              key={event.id}
-              className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300 animate-fade-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              key={`${event.month}-${event.day}`}
+              className="flex items-center justify-between p-6 hover:bg-foreground/5 transition-colors cursor-pointer"
             >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                {/* Date */}
-                <div className="text-center min-w-[80px]">
-                  <p className="text-3xl font-bold text-foreground">{event.date}</p>
-                  <p className="text-sm font-medium text-primary uppercase tracking-wider">{event.month}</p>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden sm:block w-px h-16 bg-border" />
-
-                {/* Info */}
-                <div className="flex-1">
-                  <h3 className="font-semibold text-foreground text-lg mb-2">
-                    {event.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={14} />
-                      {event.venue}, {event.city}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock size={14} />
-                      {event.time}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Action */}
-                {event.isSoldOut ? (
-                  <span className="px-6 py-2 bg-muted text-muted-foreground text-sm font-medium rounded-full">
-                    Sold Out
+              <div className="flex items-center gap-6">
+                <div className="text-center w-14">
+                  <span
+                    className={`block text-xs font-bold uppercase ${
+                      event.highlight ? "text-destructive" : "text-muted-foreground"
+                    }`}
+                  >
+                    {event.month}
                   </span>
-                ) : (
-                  <Button variant="gold" size="lg" asChild>
-                    <a href={event.ticketUrl} target="_blank" rel="noopener noreferrer">
-                      <Ticket size={16} />
-                      Biglietti
-                    </a>
-                  </Button>
-                )}
+                  <span className="block text-2xl font-bold text-foreground">{event.day}</span>
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-foreground">{event.title}</h4>
+                  <p className="text-sm text-muted-foreground">{event.location}</p>
+                </div>
               </div>
+
+              {event.status === "tickets" && (
+                <a
+                  href="#contact"
+                  className="px-4 py-2 rounded-full bg-foreground/10 text-xs font-bold text-foreground hover:bg-foreground hover:text-background transition-all hover:scale-105"
+                >
+                  Tickets
+                </a>
+              )}
+              {event.status === "sold-out" && (
+                <span className="px-4 py-2 rounded-full border border-border/30 text-xs font-bold text-muted-foreground">
+                  Sold Out
+                </span>
+              )}
+              {event.status === "private" && (
+                <span className="px-4 py-2 rounded-full bg-foreground/5 text-xs font-bold text-muted-foreground">
+                  Private
+                </span>
+              )}
             </div>
           ))}
         </div>
 
-        {/* View All */}
-        <div className="mt-12 text-center">
-          <Button variant="outline" size="lg">
-            <Calendar size={16} />
-            Vedi Tutti gli Eventi
-          </Button>
+        <div
+          className={`text-center mt-10 transition-all duration-700 delay-100 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+        >
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+          >
+            View all past events <ChevronRight className="w-4 h-4" />
+          </a>
         </div>
       </div>
     </section>

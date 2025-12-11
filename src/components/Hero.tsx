@@ -1,60 +1,72 @@
-import { Button } from "@/components/ui/button";
-import { Play, Calendar } from "lucide-react";
-import heroImage from "@/assets/hero-dj.jpg";
+import { Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+  const bgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
+      {/* Background with parallax */}
+      <div className="absolute inset-0 z-0">
         <img
-          src={heroImage}
-          alt="DJ performing at exclusive club event"
-          className="w-full h-full object-cover"
+          ref={bgRef}
+          src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?q=80&w=2000&auto=format&fit=crop"
+          alt="DJ Background"
+          className="w-full h-full object-cover opacity-40 scale-105"
+          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
+        <div className="absolute inset-0 bg-background/40 backdrop-blur-[2px]" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-narrow px-6 text-center">
-        <div className="animate-fade-up">
-          <p className="text-sm md:text-base uppercase tracking-[0.3em] text-primary mb-6 font-medium">
-            DJ & Producer
-          </p>
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-10">
+        {/* Status Badge */}
+        <div className="animate-fade-up mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/30 bg-foreground/5 backdrop-blur-md">
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+          <span className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">
+            Available for 2024/25
+          </span>
         </div>
-        
-        <h1 className="text-display text-foreground mb-8 animate-fade-up animation-delay-100">
-          DJ MARCO
+
+        {/* Main Title */}
+        <h1 className="animate-fade-up animation-delay-100 text-display font-bold tracking-tighter text-foreground mb-6 leading-[0.9]">
+          Sound. <br />
+          <span className="text-gradient">Vision.</span>
         </h1>
-        
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-up animation-delay-200">
-          Creando esperienze sonore uniche per eventi esclusivi,
-          club e festival in tutta Italia
+
+        {/* Subtitle */}
+        <p className="animate-fade-up animation-delay-200 text-xl md:text-2xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed mb-10">
+          La colonna sonora dei tuoi momenti più importanti. <br className="hidden md:block" />
+          Eleganza, energia e atmosfera.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up animation-delay-300">
-          <Button variant="hero" asChild>
-            <a href="#music">
-              <Play size={18} />
-              Ascolta l'Ultimo Mix
-            </a>
-          </Button>
-          <Button variant="heroOutline" asChild>
-            <a href="#contact">
-              <Calendar size={18} />
-              Prenota Ora
-            </a>
-          </Button>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-foreground/50 rounded-full" />
+        {/* CTAs */}
+        <div className="animate-fade-up animation-delay-300 flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#contact"
+            className="bg-foreground text-background px-8 py-4 rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300"
+          >
+            Richiedi Disponibilità
+          </a>
+          <a
+            href="#music"
+            className="bg-foreground/10 backdrop-blur-md text-foreground border border-border/30 px-8 py-4 rounded-full font-semibold text-sm hover:bg-foreground/20 transition-all flex items-center justify-center gap-2 hover:scale-[1.03]"
+          >
+            <Play className="w-4 h-4 fill-current" /> Demo Mix
+          </a>
         </div>
       </div>
     </section>
