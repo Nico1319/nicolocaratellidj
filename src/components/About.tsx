@@ -38,7 +38,7 @@ export function About() {
           <div className={`col-span-1 md:col-span-4 md:row-span-2 glass-card rounded-[40px] overflow-hidden relative group transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
           filter: isVisible ? "blur(0)" : "blur(10px)"
         }}>
-            <img alt="Live Set" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 min-h-[400px]" src="/lovable-uploads/d8e01551-15a6-47f1-829f-2f81ce4e8d2a.jpg" />
+            <img alt="Live Set" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 min-h-[400px]" src="/lovable-uploads/9491bd42-d3d3-408d-b7c6-b880572705c7.jpg" />
             <div className="absolute bottom-0 left-0 p-10 bg-gradient-to-t from-background via-background/50 to-transparent w-full">
               <h3 className="text-3xl font-bold text-foreground mb-2">Sound Design Live</h3>
               <p className="text-muted-foreground font-medium">Club, Festival e Private Party esclusivi.</p>
