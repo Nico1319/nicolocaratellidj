@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
+import partyPrivatiImage from "@/assets/party-privati.jpg";
 
 const services = [
   {
@@ -40,7 +41,7 @@ const services = [
     title: "Party Privati Esclusivi",
     description:
       "**Trasforma la tua festa in un evento leggendario.** DJ set personalizzati per 18esimi, feste di laurea e compleanni. Playlist curata sui tuoi gusti per far ballare tutti, con un impianto audio professionale.",
-    image: "https://images.unsplash.com/photo-1524368535928-5b897c3024a1?q=80&w=1600",
+    image: partyPrivatiImage,
     colSpan: "md:col-span-2",
     borderColor: "border-t-primary/30",
     iconColor: "text-primary",
