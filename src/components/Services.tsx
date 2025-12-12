@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
+import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 
 const services = [
   {
@@ -8,7 +9,7 @@ const services = [
     title: "Lounge Bar & Aperitivi",
     description:
       "**Specializzato in DJ set eleganti e di tendenza per Lounge Bar e Happy Hour.** Creo l'atmosfera sonora che massimizza l'esperienza del cliente, aumentando il tempo di permanenza. Playlist Deep House, Chillout e Nu Disco.",
-    image: "https://images.unsplash.com/photo-1563607172084-3c8115591395?q=80&w=1600",
+    image: loungeAperitivoImage,
     colSpan: "md:col-span-2",
     borderColor: "border-t-destructive/50",
     iconColor: "text-destructive",
