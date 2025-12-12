@@ -46,15 +46,23 @@ export function About() {
           </div>
 
           {/* Total Audio Card */}
-          <div className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] p-8 flex flex-col justify-between transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
+          <div className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] overflow-hidden relative group transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
           filter: isVisible ? "blur(0)" : "blur(10px)"
         }}>
-            <div className="w-12 h-12 bg-foreground/10 rounded-full flex items-center justify-center text-foreground mb-4">
-              <Music2 className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-4xl font-bold text-foreground mb-1">Total Audio</h4>
-              <p className="text-muted-foreground font-medium">House, Tech, Urban & Revival. Un repertorio infinito.</p>
+            <img 
+              alt="Total Audio" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-40" 
+              src="/lovable-uploads/5d795b98-656f-41dd-83bf-2d51608a98c4.jpg" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+              <div className="w-12 h-12 bg-foreground/10 backdrop-blur-md rounded-full flex items-center justify-center text-foreground mb-4">
+                <Music2 className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-4xl font-bold text-foreground mb-1">Total Audio</h4>
+                <p className="text-muted-foreground font-medium">House, Tech, Urban & Revival. Un repertorio infinito.</p>
+              </div>
             </div>
           </div>
 
