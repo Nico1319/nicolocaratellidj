@@ -51,10 +51,10 @@ export function About() {
         }}>
             <img 
               alt="Total Audio" 
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-40" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-70" 
               src="/lovable-uploads/5d795b98-656f-41dd-83bf-2d51608a98c4.jpg" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent" />
             <div className="relative z-10 p-8 h-full flex flex-col justify-between">
               <div className="w-12 h-12 bg-foreground/10 backdrop-blur-md rounded-full flex items-center justify-center text-foreground mb-4">
                 <Music2 className="w-6 h-6" />
