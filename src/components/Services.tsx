@@ -115,9 +115,9 @@ export function Services() {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover opacity-15 transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-background/50" />
+                <div className="absolute inset-0 bg-background/30" />
               </div>
 
               {/* Content */}
