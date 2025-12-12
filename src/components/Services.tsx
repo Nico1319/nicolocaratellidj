@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
-import aperitivoDjImage from "@/assets/aperitivo-dj.jpg";
+import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 
 const services = [
   {
@@ -19,7 +19,7 @@ const services = [
     title: "Aperiski / Winter Party",
     description:
       "DJ set ad alta quota per ski-resort e chalet. Musica dinamica per creare il perfetto après-ski o l'atmosfera giusta per i tuoi party invernali.",
-    image: aperitivoDjImage,
+    image: aperiskiImage,
     colSpan: "md:col-span-1",
     borderColor: "border-t-destructive/30",
     iconColor: "text-destructive",
