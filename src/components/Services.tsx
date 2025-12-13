@@ -4,6 +4,7 @@ import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
 import weddingDjImage from "@/assets/wedding-dj.jpg";
+import inaugurazioniImage from "@/assets/inaugurazioni.jpg";
 
 const services = [
   {
@@ -32,7 +33,7 @@ const services = [
     title: "Inaugurazioni Commerciali",
     description:
       "Sound design mirato per il lancio di nuovi negozi, showroom, fiere ed eventi corporate. **Massima visibilità** e coinvolgimento per il tuo brand.",
-    image: "https://images.unsplash.com/photo-1540306385153-f7241279a61e?q=80&w=800",
+    image: inaugurazioniImage,
     colSpan: "md:col-span-1",
     borderColor: "border-t-border/30",
     iconColor: "text-foreground",
