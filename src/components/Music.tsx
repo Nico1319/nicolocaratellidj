@@ -98,44 +98,45 @@ export function Music() {
         </div>
 
         {/* YouTube Featured Section */}
-        <div className={`mt-12 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
-        filter: isVisible ? "blur(0)" : "blur(10px)"
-      }}>
-          <div className="flex items-center gap-3 mb-6">
-            <Youtube className="w-6 h-6 text-destructive" />
-            <h3 className="text-2xl font-bold text-foreground">Featured on YouTube</h3>
-            <span className="ml-auto text-xs font-medium bg-destructive/20 text-destructive px-3 py-1 rounded-full">500K+ views</span>
+        <a 
+          href="https://www.youtube.com/watch?v=W0WIvX4MJfg" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`mt-8 flex items-center gap-5 bg-card/60 backdrop-blur-xl border border-border/30 rounded-2xl p-4 md:p-5 group hover:border-destructive/40 transition-all duration-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          style={{
+            filter: isVisible ? "blur(0)" : "blur(10px)",
+            transitionDelay: "500ms"
+          }}
+        >
+          {/* Thumbnail */}
+          <div className="w-24 h-24 md:w-32 md:h-32 rounded-xl overflow-hidden flex-shrink-0 relative">
+            <img 
+              src="https://img.youtube.com/vi/W0WIvX4MJfg/mqdefault.jpg" 
+              alt="Most listened remix" 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="w-10 h-10 bg-destructive rounded-full flex items-center justify-center">
+                <Play className="w-4 h-4 fill-destructive-foreground text-destructive-foreground ml-0.5" />
+              </div>
+            </div>
           </div>
           
-          <a 
-            href="https://www.youtube.com/watch?v=W0WIvX4MJfg" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="block bg-card/80 backdrop-blur-xl border border-border/30 rounded-[24px] overflow-hidden group hover:border-destructive/50 transition-all duration-300"
-          >
-            <div className="aspect-video relative">
-              <img 
-                src="https://img.youtube.com/vi/W0WIvX4MJfg/maxresdefault.jpg" 
-                alt="Most listened remix" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-20 h-20 bg-destructive rounded-full flex items-center justify-center shadow-lg shadow-destructive/30">
-                  <Play className="w-8 h-8 fill-destructive-foreground text-destructive-foreground ml-1" />
-                </div>
-              </div>
+          {/* Info */}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <Youtube className="w-4 h-4 text-destructive flex-shrink-0" />
+              <span className="text-[10px] font-medium bg-destructive/20 text-destructive px-2 py-0.5 rounded-full">500K+ views</span>
             </div>
-            <div className="p-6 flex items-center justify-between">
-              <div>
-                <p className="text-foreground font-semibold text-lg">Il remix più ascoltato</p>
-                <p className="text-muted-foreground text-sm">Oltre mezzo milione di ascolti su YouTube</p>
-              </div>
-              <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center group-hover:bg-destructive transition-colors">
-                <Youtube className="w-5 h-5 text-destructive group-hover:text-destructive-foreground transition-colors" />
-              </div>
-            </div>
-          </a>
-        </div>
+            <p className="text-foreground font-semibold text-sm md:text-base truncate">Il remix più ascoltato</p>
+            <p className="text-muted-foreground text-xs md:text-sm">Oltre mezzo milione di ascolti</p>
+          </div>
+          
+          {/* Arrow */}
+          <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center group-hover:bg-destructive transition-colors flex-shrink-0">
+            <Play className="w-4 h-4 text-muted-foreground group-hover:text-destructive-foreground transition-colors ml-0.5" />
+          </div>
+        </a>
       </div>
     </section>;
 }
