@@ -3,6 +3,7 @@ import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucid
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
+import weddingDjImage from "@/assets/wedding-dj.jpg";
 
 const services = [
   {
@@ -51,7 +52,7 @@ const services = [
     title: "Wedding DJ",
     description:
       "**La colonna sonora del tuo giorno più bello.** Un servizio Wedding DJ di alta classe, discreto e professionale. Dalla musica soft per la cerimonia al DJ set energico per il party serale. Massima attenzione ai dettagli.",
-    image: "https://images.unsplash.com/photo-1598282361117-2c937299a4c1?q=80&w=1600",
+    image: weddingDjImage,
     colSpan: "md:col-span-3",
     borderColor: "border-t-muted-foreground/30",
     iconColor: "text-muted-foreground",
