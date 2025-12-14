@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Disc3 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import logoWhite from "@/assets/logo-white.png";
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -33,13 +34,8 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 z-50">
-            <div className="w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center">
-              <Disc3 className="w-5 h-5 animate-spin-slow" />
-            </div>
-            <span className="font-semibold tracking-tight text-foreground text-sm">
-              Nicolò Caratelli
-            </span>
+          <a href="#" className="z-50">
+            <img src={logoWhite} alt="Nicolò Caratelli DJ" className="h-8 w-auto" />
           </a>
 
           {/* Desktop Navigation */}
