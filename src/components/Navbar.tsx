@@ -7,7 +7,8 @@ const navLinks = [
   { href: "#story", label: "La Mia Storia" },
   { href: "#about", label: "Competenze" },
   { href: "#services", label: "Servizi" },
-  { href: "#events", label: "Eventi" },
+  { href: "#music", label: "Listen" },
+  { href: "#social", label: "Social" },
 ];
 
 export function Navbar() {
