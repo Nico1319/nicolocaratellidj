@@ -67,11 +67,16 @@ export function About() {
           </a>
 
           {/* Technology Card */}
-          <a href="#services" className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] p-8 relative overflow-hidden group cursor-pointer transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
+          <a href="#services" className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] relative overflow-hidden group cursor-pointer transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
           filter: isVisible ? "blur(0)" : "blur(10px)"
         }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-background group-hover:opacity-80 transition-opacity" />
-            <div className="relative z-10 h-full flex flex-col justify-between">
+            <img 
+              alt="Tecnologia Premium" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-60" 
+              src="/lovable-uploads/tech-premium-bg.jpg"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-background/80" />
+            <div className="relative z-10 h-full flex flex-col justify-between p-8">
               <div className="flex justify-between items-start">
                 <h4 className="text-2xl font-bold text-foreground">
                   Tecnologia <br />
