@@ -2,19 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { Play, PlayCircle, CloudFog, Youtube } from "lucide-react";
 const mixes = [{
   id: "01",
-  title: "Summer Sunset Vol. 3",
-  genre: "Deep House",
-  duration: "54 min"
+  title: "Le Canzoni (Afro Remix)",
+  genre: "Afro House",
+  duration: "3 min",
+  url: "https://soundcloud.com/nicolocaratellidj/lecanzoniafroremix"
 }, {
   id: "02",
-  title: "Club Energy 2024",
-  genre: "Tech House",
-  duration: "48 min"
+  title: "Pronto Come Va - The Kolors (Afro Remix)",
+  genre: "Afro House",
+  duration: "3 min",
+  url: "https://soundcloud.com/nicolocaratellidj/pronto-come-va-the-kolors-afro-remix"
 }, {
   id: "03",
-  title: "Wedding Party Best Of",
-  genre: "Revival & Commercial",
-  duration: "60 min"
+  title: "Meet Me Halfway - Black Eyed Peas (Afro Remix)",
+  genre: "Afro House",
+  duration: "3 min",
+  url: "https://soundcloud.com/nicolocaratellidj/meet-me-halfway-black-eyed-peas-afro-remix-nicolo-caratelli"
 }];
 export function Music() {
   const [isVisible, setIsVisible] = useState(false);
@@ -82,7 +85,7 @@ export function Music() {
           <div className="flex-1 w-full space-y-2">
             <h3 className="text-2xl font-bold text-foreground mb-6">Latest Mixes</h3>
 
-            {mixes.map(mix => <div key={mix.id} className="group flex items-center justify-between p-4 rounded-xl hover:bg-foreground/5 transition-colors cursor-pointer border-b border-border/30 last:border-0">
+            {mixes.map(mix => <a key={mix.id} href={mix.url} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 rounded-xl hover:bg-foreground/5 transition-colors cursor-pointer border-b border-border/30 last:border-0">
                 <div className="flex items-center gap-4">
                   <span className="text-muted-foreground font-mono text-xs">{mix.id}</span>
                   <div>
@@ -93,7 +96,7 @@ export function Music() {
                   </div>
                 </div>
                 <PlayCircle className="text-muted-foreground group-hover:text-foreground transition-colors w-6 h-6" />
-              </div>)}
+              </a>)}
           </div>
         </div>
 
