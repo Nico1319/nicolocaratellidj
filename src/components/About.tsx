@@ -46,13 +46,13 @@ export function About() {
           </div>
 
           {/* Total Audio Card */}
-          <div className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] overflow-hidden relative group transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
+          <a href="#music" className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] overflow-hidden relative group cursor-pointer transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
           filter: isVisible ? "blur(0)" : "blur(10px)"
         }}>
             <img 
               alt="Total Audio" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-70" 
-              src="/lovable-uploads/total-audio-bg.tiff"
+              src="/lovable-uploads/total-audio-new-bg.tiff"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/30 to-transparent" />
             <div className="relative z-10 p-8 h-full flex flex-col justify-between">
@@ -61,10 +61,10 @@ export function About() {
               </div>
               <div>
                 <h4 className="text-4xl font-bold text-foreground mb-1">Total Audio</h4>
-                <p className="text-muted-foreground font-medium">House, Tech, Urban & Revival. Un repertorio infinito.</p>
+                <p className="text-muted-foreground font-medium">House in tutte le sue sfaccettature, dall'Afro alla Tech.</p>
               </div>
             </div>
-          </div>
+          </a>
 
           {/* Technology Card */}
           <a href="#services" className={`col-span-1 md:col-span-2 md:row-span-1 glass-card rounded-[40px] p-8 relative overflow-hidden group cursor-pointer transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} style={{
