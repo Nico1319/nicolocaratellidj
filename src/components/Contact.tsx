@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useScrollAnimation, appleRevealStyles, apple3DStyles } from "@/hooks/useScrollAnimation";
 
@@ -15,7 +15,8 @@ const eventTypes = [
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const { ref: sectionRef, isVisible, scrollProgress } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -43,9 +44,18 @@ export function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-32 bg-background border-t border-border/30 overflow-hidden"
+      className="py-32 bg-background border-t border-border/30 overflow-hidden relative"
     >
-      <div className="container mx-auto px-6 max-w-3xl text-center">
+      {/* Background decoration */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] transition-all duration-1000"
+        style={{ 
+          opacity: isVisible ? 1 : 0,
+          transform: `translate(-50%, -50%) scale(${1 + scrollProgress * 0.3})`,
+        }}
+      />
+
+      <div className="container mx-auto px-6 max-w-3xl text-center relative z-10">
         <h2
           className="text-heading font-bold mb-6"
           style={appleRevealStyles(isVisible, 0)}
@@ -65,59 +75,109 @@ export function Contact() {
           style={apple3DStyles(isVisible, 200)}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Nome"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all hover:scale-[1.01] focus:scale-[1.01]"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all hover:scale-[1.01] focus:scale-[1.01]"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Nome"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onFocus={() => setFocusedField("name")}
+                onBlur={() => setFocusedField(null)}
+                required
+                className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all duration-300 hover:scale-[1.01] focus:scale-[1.02] focus:shadow-[0_0_20px_hsl(var(--primary)/0.2)]"
+              />
+              <div 
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500"
+                style={{ width: focusedField === "name" ? "90%" : "0%" }}
+              />
+            </div>
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onFocus={() => setFocusedField("email")}
+                onBlur={() => setFocusedField(null)}
+                required
+                className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all duration-300 hover:scale-[1.01] focus:scale-[1.02] focus:shadow-[0_0_20px_hsl(var(--primary)/0.2)]"
+              />
+              <div 
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500"
+                style={{ width: focusedField === "email" ? "90%" : "0%" }}
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="date"
-              value={formData.date}
-              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all hover:scale-[1.01] focus:scale-[1.01]"
-            />
-            <select
-              value={formData.eventType}
-              onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all appearance-none hover:scale-[1.01] focus:scale-[1.01]"
-            >
-              {eventTypes.map((type) => (
-                <option key={type} value={type === "Tipo di Evento" ? "" : type}>
-                  {type}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <input
+                type="date"
+                value={formData.date}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                onFocus={() => setFocusedField("date")}
+                onBlur={() => setFocusedField(null)}
+                className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all duration-300 hover:scale-[1.01] focus:scale-[1.02] focus:shadow-[0_0_20px_hsl(var(--primary)/0.2)]"
+              />
+              <div 
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500"
+                style={{ width: focusedField === "date" ? "90%" : "0%" }}
+              />
+            </div>
+            <div className="relative">
+              <select
+                value={formData.eventType}
+                onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
+                onFocus={() => setFocusedField("eventType")}
+                onBlur={() => setFocusedField(null)}
+                className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all duration-300 appearance-none hover:scale-[1.01] focus:scale-[1.02] focus:shadow-[0_0_20px_hsl(var(--primary)/0.2)]"
+              >
+                {eventTypes.map((type) => (
+                  <option key={type} value={type === "Tipo di Evento" ? "" : type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+              <div 
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500"
+                style={{ width: focusedField === "eventType" ? "90%" : "0%" }}
+              />
+            </div>
           </div>
 
-          <textarea
-            rows={4}
-            placeholder="Messaggio..."
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            required
-            className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all resize-none hover:scale-[1.005] focus:scale-[1.005]"
-          />
+          <div className="relative">
+            <textarea
+              rows={4}
+              placeholder="Messaggio..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              onFocus={() => setFocusedField("message")}
+              onBlur={() => setFocusedField(null)}
+              required
+              className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground placeholder-muted-foreground outline-none transition-all duration-300 resize-none hover:scale-[1.005] focus:scale-[1.01] focus:shadow-[0_0_20px_hsl(var(--primary)/0.2)]"
+            />
+            <div 
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-500"
+              style={{ width: focusedField === "message" ? "95%" : "0%" }}
+            />
+          </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-foreground text-background font-bold text-lg py-4 rounded-xl hover:bg-foreground/90 transition-all mt-4 shadow-[0_0_20px_hsl(0_0%_100%/0.2)] hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(0_0%_100%/0.3)] disabled:opacity-50 active:scale-[0.99]"
+            className="group w-full bg-foreground text-background font-bold text-lg py-4 rounded-xl hover:bg-foreground/90 transition-all duration-500 mt-4 shadow-[0_0_20px_hsl(0_0%_100%/0.2)] hover:scale-[1.02] hover:shadow-[0_0_50px_hsl(0_0%_100%/0.4)] disabled:opacity-50 active:scale-[0.99] relative overflow-hidden"
           >
-            {isSubmitting ? "Invio in corso..." : "Invia Richiesta"}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              {isSubmitting ? (
+                "Invio in corso..."
+              ) : (
+                <>
+                  Invia Richiesta
+                  <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </>
+              )}
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </button>
         </form>
 
@@ -127,19 +187,21 @@ export function Contact() {
         >
           <a
             href="mailto:djnicolo.caratelli@libero.it"
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-all border border-border/30 hover:scale-105 hover:shadow-lg"
+            className="group flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-all duration-500 border border-border/30 hover:scale-110 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:border-primary/30"
           >
-            <Mail className="w-5 h-5 text-muted-foreground" />
-            <span className="text-sm font-medium text-foreground">
+            <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors group-hover:scale-110" />
+            <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
               djnicolo.caratelli@libero.it
             </span>
           </a>
           <a
             href="https://wa.me/393920712401"
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-all border border-border/30 hover:scale-105 hover:shadow-lg"
+            className="group flex items-center gap-3 px-6 py-3 rounded-full bg-card hover:bg-muted transition-all duration-500 border border-border/30 hover:scale-110 hover:shadow-[0_0_30px_hsl(142_76%_36%/0.3)] hover:border-green-500/30"
           >
-            <Phone className="w-5 h-5 text-muted-foreground" />
-            <span className="text-sm font-medium text-foreground">+39 392 071 2401</span>
+            <Phone className="w-5 h-5 text-muted-foreground group-hover:text-green-500 transition-colors group-hover:scale-110" />
+            <span className="text-sm font-medium text-foreground group-hover:text-green-500 transition-colors">
+              +39 392 071 2401
+            </span>
           </a>
         </div>
       </div>
