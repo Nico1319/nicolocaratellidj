@@ -1,5 +1,5 @@
 import { Instagram, Music2, Bell } from "lucide-react";
-import { useScrollAnimation, appleRevealStyles, appleScaleStyles } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation, appleRevealStyles, appleScaleStyles, appleRotateStyles } from "@/hooks/useScrollAnimation";
 
 const socials = [
   {
@@ -8,6 +8,7 @@ const socials = [
     handle: "@nicolocaratellidj",
     description: "Behind the scenes, stories e contenuti esclusivi",
     url: "https://www.instagram.com/nicolocaratellidj",
+    gradient: "from-purple-500 to-pink-500",
   },
   {
     icon: Music2,
@@ -15,11 +16,12 @@ const socials = [
     handle: "@nicolocaratellidj",
     description: "Video virali, remix preview e momenti live",
     url: "https://www.tiktok.com/@nicolocaratellidj",
+    gradient: "from-cyan-500 to-blue-500",
   },
 ];
 
 export function Social() {
-  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const { ref: sectionRef, isVisible, scrollProgress } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
     <section
@@ -27,14 +29,22 @@ export function Social() {
       id="social"
       className="py-32 bg-background overflow-hidden relative"
     >
-      {/* Decorative Blurs */}
+      {/* Decorative Blurs with parallax */}
       <div
         className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-purple-900/15 rounded-full blur-[120px] transition-all duration-1000"
-        style={{ opacity: isVisible ? 1 : 0, transitionDelay: "200ms" }}
+        style={{ 
+          opacity: isVisible ? 1 : 0, 
+          transitionDelay: "200ms",
+          transform: `translateY(${-scrollProgress * 60}px) rotate(${scrollProgress * 20}deg)`,
+        }}
       />
       <div
         className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] transition-all duration-1000"
-        style={{ opacity: isVisible ? 1 : 0, transitionDelay: "400ms" }}
+        style={{ 
+          opacity: isVisible ? 1 : 0, 
+          transitionDelay: "400ms",
+          transform: `translateY(${scrollProgress * 50}px)`,
+        }}
       />
 
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
@@ -68,30 +78,30 @@ export function Social() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 p-5 rounded-2xl hover:bg-foreground/5 transition-all duration-300 border border-transparent hover:border-border/30 hover:scale-[1.02]"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? "translateY(0)" : "translateY(30px)",
-                  filter: isVisible ? "blur(0)" : "blur(8px)",
-                  transition: `all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${350 + index * 100}ms`,
-                }}
+                className="group flex items-center gap-5 p-5 rounded-2xl hover:bg-foreground/5 transition-all duration-500 border border-transparent hover:border-border/30 relative overflow-hidden"
+                style={appleRotateStyles(isVisible, 350 + index * 150)}
               >
+                {/* Hover gradient background */}
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-r ${social.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                />
+
                 {/* Icon */}
-                <div className="w-14 h-14 bg-muted rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300 flex-shrink-0 group-hover:scale-110">
+                <div className="w-14 h-14 bg-muted rounded-2xl flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-500 flex-shrink-0 group-hover:scale-125 group-hover:rotate-12 relative z-10">
                   <social.icon className="w-6 h-6" />
                 </div>
 
                 {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-foreground">{social.name}</h3>
+                <div className="flex-1 min-w-0 relative z-10">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors duration-300">{social.name}</h3>
                   <p className="text-primary font-medium text-sm">{social.handle}</p>
-                  <p className="text-muted-foreground text-xs mt-1 truncate">
+                  <p className="text-muted-foreground text-xs mt-1 truncate group-hover:text-muted-foreground/90">
                     {social.description}
                   </p>
                 </div>
 
                 {/* Arrow */}
-                <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center group-hover:bg-foreground transition-all flex-shrink-0 group-hover:scale-110">
+                <div className="w-10 h-10 bg-card rounded-full flex items-center justify-center group-hover:bg-foreground transition-all flex-shrink-0 group-hover:scale-125 group-hover:translate-x-1 relative z-10">
                   <svg
                     className="w-4 h-4 text-muted-foreground group-hover:text-background transition-colors"
                     fill="none"
@@ -113,14 +123,14 @@ export function Social() {
 
         {/* Community Note */}
         <div
-          className="mt-8 flex items-center gap-5 bg-card/60 backdrop-blur-xl border border-border/30 rounded-2xl p-4 md:p-5 hover:scale-[1.01] transition-transform duration-300"
-          style={appleRevealStyles(isVisible, 500)}
+          className="mt-8 flex items-center gap-5 bg-card/60 backdrop-blur-xl border border-border/30 rounded-2xl p-4 md:p-5 group hover:scale-[1.02] hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)]"
+          style={appleRevealStyles(isVisible, 600)}
         >
-          <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center flex-shrink-0">
-            <Bell className="w-5 h-5 text-primary" />
+          <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
+            <Bell className="w-5 h-5 text-primary group-hover:animate-bounce" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-foreground font-semibold text-sm md:text-base">
+            <p className="text-foreground font-semibold text-sm md:text-base group-hover:text-primary transition-colors">
               Attiva le notifiche
             </p>
             <p className="text-muted-foreground text-xs md:text-sm">
