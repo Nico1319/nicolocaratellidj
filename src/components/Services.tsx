@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
+import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
@@ -61,34 +61,14 @@ const services = [
 ];
 
 export function Services() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.05 });
 
   return (
-    <section ref={sectionRef} id="services" className="py-32 bg-secondary">
+    <section ref={sectionRef} id="services" className="py-32 bg-secondary overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <h2
-          className={`text-heading font-bold mb-16 text-center transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{ filter: isVisible ? "blur(0)" : "blur(10px)" }}
+          className="text-heading font-bold mb-16 text-center"
+          style={appleRevealStyles(isVisible, 0)}
         >
           Esperienze su misura per il tuo successo.
         </h2>
@@ -97,12 +77,14 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`col-span-1 ${service.colSpan} glass-card rounded-[32px] p-8 md:p-10 relative overflow-hidden group min-h-[350px] border-t-4 ${service.borderColor} transition-all duration-700`}
+              className={`col-span-1 ${service.colSpan} glass-card rounded-[32px] p-8 md:p-10 relative overflow-hidden group min-h-[350px] border-t-4 ${service.borderColor}`}
               style={{
                 opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(40px)",
+                transform: isVisible
+                  ? "perspective(1000px) rotateX(0deg) translateY(0) scale(1)"
+                  : "perspective(1000px) rotateX(-8deg) translateY(60px) scale(0.95)",
                 filter: isVisible ? "blur(0)" : "blur(10px)",
-                transitionDelay: `${index * 100}ms`,
+                transition: `all 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${150 + index * 100}ms`,
               }}
             >
               {/* Badge */}
@@ -126,8 +108,12 @@ export function Services() {
 
               {/* Content */}
               <div className="relative z-10 h-full flex flex-col justify-end">
-                <service.icon className={`w-8 h-8 md:w-10 md:h-10 ${service.iconColor} mb-5`} />
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">{service.title}</h3>
+                <service.icon
+                  className={`w-8 h-8 md:w-10 md:h-10 ${service.iconColor} mb-5 transition-transform duration-500 group-hover:scale-110`}
+                />
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                  {service.title}
+                </h3>
                 <p className="text-muted-foreground leading-snug text-sm md:text-base max-w-lg">
                   {service.description.replace(/\*\*/g, "")}
                 </p>

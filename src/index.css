@@ -134,6 +134,99 @@
     @apply opacity-100 translate-y-0;
     filter: blur(0);
   }
+
+  /* Advanced Apple animations */
+  .apple-fade-up {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    filter: blur(12px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  .apple-scale-in {
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(10px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  .apple-slide-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    filter: blur(10px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+
+  .apple-slide-right {
+    opacity: 0;
+    transform: translateX(80px);
+    filter: blur(10px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+
+  .apple-3d-reveal {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-10deg) translateY(40px);
+    filter: blur(8px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-3d-reveal.visible {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+    filter: blur(0);
+  }
+
+  .apple-blur-in {
+    opacity: 0;
+    filter: blur(20px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .apple-blur-in.visible {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  /* Staggered animation delays */
+  .stagger-1 { transition-delay: 100ms !important; }
+  .stagger-2 { transition-delay: 200ms !important; }
+  .stagger-3 { transition-delay: 300ms !important; }
+  .stagger-4 { transition-delay: 400ms !important; }
+  .stagger-5 { transition-delay: 500ms !important; }
+  .stagger-6 { transition-delay: 600ms !important; }
+  .stagger-7 { transition-delay: 700ms !important; }
+  .stagger-8 { transition-delay: 800ms !important; }
+
+  /* Parallax effect */
+  .parallax-slow {
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
 }
 
 @layer utilities {
