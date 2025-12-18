@@ -1,21 +1,21 @@
-import { Camera, Video, Sparkles, Download, Users, Share2, Palette, Star } from "lucide-react";
+import { Camera, Sparkles, Download, Users, Share2, Palette, Star } from "lucide-react";
 import { useScrollAnimation, appleRevealStyles, apple3DStyles } from "@/hooks/useScrollAnimation";
+import photoboothHero from "@/assets/photobooth-hero.jpg";
+import photoboothPrint from "@/assets/photobooth-print.jpg";
+import photoboothFun from "@/assets/photobooth-fun.jpg";
 
 const features = [
-  {
-    icon: Video,
-    title: "Video 360° in 4K",
-    description: "Pedana rotante con braccio motorizzato che gira intorno agli ospiti. Video spettacolari con effetti slow-motion e musica.",
-  },
   {
     icon: Camera,
     title: "Stampa Istantanea",
     description: "Foto stampate in pochi secondi con qualità professionale. Colori brillanti e resistenza nel tempo.",
+    image: photoboothPrint,
   },
   {
     icon: Share2,
     title: "Social Ready",
     description: "QR Code per download immediato. Video pronti per Instagram, TikTok e WhatsApp in tempo reale.",
+    image: photoboothFun,
   },
   {
     icon: Palette,
@@ -47,29 +47,49 @@ export function PhotoBooth() {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-20" style={appleRevealStyles(isVisible, 0)}>
+        <div className="text-center mb-16" style={appleRevealStyles(isVisible, 0)}>
           <span className="text-xs font-bold bg-primary/10 text-primary px-4 py-2 rounded-full uppercase tracking-widest mb-6 inline-block">
             Nuovo Servizio
           </span>
-          <h2 className="text-heading font-bold mb-6">
+          <h2 className="text-heading font-bold">
             Photo Booth 360° & Instant Print
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Non semplici fotografie, ma veri e propri video spettacolari che catturano l'energia del momento a tre giri al secondo.
-          </p>
+        </div>
+
+        {/* Hero Image */}
+        <div 
+          className="mb-20 rounded-[32px] overflow-hidden"
+          style={apple3DStyles(isVisible, 100)}
+        >
+          <img 
+            src={photoboothHero} 
+            alt="Photo Booth 360" 
+            className="w-full h-[400px] md:h-[500px] object-cover"
+          />
         </div>
 
         {/* Main Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="glass-card rounded-[32px] p-8 md:p-10 group hover:bg-card/80 transition-all duration-500"
-              style={apple3DStyles(isVisible, 100 + index * 100)}
+              className="glass-card rounded-[32px] overflow-hidden group hover:bg-card/80 transition-all duration-500"
+              style={apple3DStyles(isVisible, 200 + index * 100)}
             >
-              <feature.icon className="w-10 h-10 text-primary mb-6 transition-transform duration-500 group-hover:scale-110" />
-              <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              {feature.image && (
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+              )}
+              <div className="p-8">
+                <feature.icon className="w-10 h-10 text-primary mb-4 transition-transform duration-500 group-hover:scale-110" />
+                <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">{feature.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -77,7 +97,7 @@ export function PhotoBooth() {
         {/* Benefits Row */}
         <div 
           className="glass-card rounded-[32px] p-8 md:p-12 mb-20"
-          style={appleRevealStyles(isVisible, 400)}
+          style={appleRevealStyles(isVisible, 500)}
         >
           <h3 className="text-2xl font-bold text-center mb-10">Perché sceglierlo per il tuo evento?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -85,7 +105,7 @@ export function PhotoBooth() {
               <div 
                 key={benefit.title} 
                 className="text-center"
-                style={appleRevealStyles(isVisible, 500 + index * 100)}
+                style={appleRevealStyles(isVisible, 600 + index * 100)}
               >
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <benefit.icon className="w-8 h-8 text-primary" />
@@ -98,14 +118,14 @@ export function PhotoBooth() {
         </div>
 
         {/* How it Works */}
-        <div className="mb-20" style={appleRevealStyles(isVisible, 600)}>
+        <div className="mb-20" style={appleRevealStyles(isVisible, 700)}>
           <h3 className="text-2xl font-bold text-center mb-12">Come funziona</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {steps.map((step, index) => (
               <div
                 key={step.number}
                 className="relative"
-                style={apple3DStyles(isVisible, 700 + index * 100)}
+                style={apple3DStyles(isVisible, 800 + index * 100)}
               >
                 <div className="glass-card rounded-[24px] p-8 h-full">
                   <span className="text-5xl font-bold text-primary/20 absolute top-4 right-6">{step.number}</span>
@@ -120,7 +140,7 @@ export function PhotoBooth() {
         {/* DJ Quote */}
         <div 
           className="glass-card rounded-[32px] p-10 md:p-14 text-center border-t-4 border-t-primary/30"
-          style={appleRevealStyles(isVisible, 900)}
+          style={appleRevealStyles(isVisible, 1000)}
         >
           <Star className="w-10 h-10 text-primary mx-auto mb-6" />
           <blockquote className="text-xl md:text-2xl font-medium text-foreground mb-6 italic leading-relaxed">
