@@ -1,35 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { ChevronDown, ChevronUp, Mic } from "lucide-react";
-import { useScrollAnimation, appleRevealStyles, appleSlideStyles, appleImageRevealStyles } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 
 export function Story() {
   const [showHistory, setShowHistory] = useState(false);
-  const { ref: sectionRef, isVisible, scrollProgress } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-  const [imageParallax, setImageParallax] = useState(0);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!imageRef.current) return;
-      const rect = imageRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const parallax = (rect.top - windowHeight / 2) * 0.1;
-      setImageParallax(parallax);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section ref={sectionRef} id="story" className="py-32 bg-secondary overflow-hidden relative">
-      {/* Background decoration */}
-      <div 
-        className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] transition-opacity duration-1000"
-        style={{ opacity: isVisible ? 1 : 0 }}
-      />
-      
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <section ref={sectionRef} id="story" className="py-32 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
         <h2
           className="text-center text-heading font-bold mb-16"
           style={appleRevealStyles(isVisible, 0)}
@@ -46,13 +25,7 @@ export function Story() {
             >
               <p className="text-2xl font-bold text-foreground leading-relaxed">
                 Nicolò Caratelli: DJ, Musicista, e Professionista dell'Intrattenimento a{" "}
-                <span className="text-primary relative">
-                  Roma
-                  <span 
-                    className="absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-700"
-                    style={{ width: isVisible ? "100%" : "0%" }}
-                  />
-                </span>.
+                <span className="text-primary">Roma</span>.
               </p>
               <p className="text-lg font-medium text-muted-foreground leading-relaxed">
                 Ciao! Mi chiamo Nicolò Caratelli, ho 21 anni e sono orgogliosamente di{" "}
@@ -78,22 +51,15 @@ export function Story() {
 
             <button
               onClick={() => setShowHistory(!showHistory)}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-all pt-4 hover:scale-[1.03] transform group"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors pt-4 hover:scale-[1.03] transform"
               style={appleSlideStyles(isVisible, "left", 450)}
             >
               {showHistory ? "Nascondi la storia completa" : "Scopri di più sulla mia formazione"}
-              <span className="transition-transform duration-300 group-hover:translate-y-0.5">
-                {showHistory ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </span>
+              {showHistory ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
             </button>
 
             {showHistory && (
-              <div 
-                className="space-y-6 pt-8 border-t border-border/30"
-                style={{
-                  animation: "slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-                }}
-              >
+              <div className="space-y-6 pt-8 border-t border-border/30 animate-fade-in">
                 <h3 className="text-2xl font-bold text-foreground">
                   Da Strumentista a Produttore: La Mia Formazione Musicale Completa
                 </h3>
@@ -116,54 +82,23 @@ export function Story() {
             )}
           </div>
 
-          {/* Image with parallax */}
+          {/* Image */}
           <div
-            ref={imageRef}
-            className="relative rounded-[40px] overflow-hidden shadow-2xl group"
-            style={{
-              ...appleSlideStyles(isVisible, "right", 200),
-              transform: isVisible 
-                ? `translateX(0) translateY(${imageParallax}px)` 
-                : "translateX(80px)",
-            }}
+            className="relative rounded-[40px] overflow-hidden shadow-2xl group hover:scale-[1.01] transition-transform duration-500"
+            style={appleSlideStyles(isVisible, "right", 200)}
           >
-            <div className="overflow-hidden rounded-[40px]">
-              <img
-                alt="Ritratto DJ Nicolò Caratelli"
-                className="w-full h-full object-cover transition-all duration-700 aspect-[4/5]"
-                style={{
-                  ...appleImageRevealStyles(isVisible, 400),
-                  transform: isVisible 
-                    ? `scale(1) translateY(${-imageParallax * 0.5}px)` 
-                    : "scale(1.1) translateY(20px)",
-                }}
-                src="/lovable-uploads/90186305-67f5-43a2-b0fe-5b954e08f3a9.jpg"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div 
-              className="absolute bottom-6 right-6 p-3 bg-foreground/10 backdrop-blur-md rounded-full border border-border/30 transition-all duration-500 group-hover:scale-110 group-hover:bg-foreground/20"
-            >
+            <img
+              alt="Ritratto DJ Nicolò Caratelli"
+              className="w-full h-full object-cover opacity-90 transition-all duration-700 aspect-[4/5] group-hover:scale-105"
+              src="/lovable-uploads/90186305-67f5-43a2-b0fe-5b954e08f3a9.jpg"
+            />
+            <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500" />
+            <div className="absolute bottom-6 right-6 p-3 bg-foreground/10 backdrop-blur-md rounded-full border border-border/30">
               <Mic className="w-5 h-5 text-foreground" />
             </div>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-            filter: blur(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
-import { useScrollAnimation, appleRevealStyles, appleImageRevealStyles } from "@/hooks/useScrollAnimation";
+import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
@@ -62,35 +61,11 @@ const services = [
 ];
 
 export function Services() {
-  const { ref: sectionRef, isVisible, scrollProgress } = useScrollAnimation<HTMLElement>({ threshold: 0.02 });
-  const [imageParallax, setImageParallax] = useState<number[]>([0, 0, 0, 0, 0]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-      
-      setImageParallax(services.map((_, i) => progress * (15 + i * 5)));
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.05 });
 
   return (
-    <section ref={sectionRef} id="services" className="py-32 bg-secondary overflow-hidden relative">
-      {/* Background decoration */}
-      <div 
-        className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-destructive/5 rounded-full blur-[150px] -translate-y-1/2 transition-all duration-1000"
-        style={{ 
-          opacity: isVisible ? 1 : 0,
-          transform: `translateY(${-scrollProgress * 100}px)`,
-        }}
-      />
-
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <section ref={sectionRef} id="services" className="py-32 bg-secondary overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
         <h2
           className="text-heading font-bold mb-16 text-center"
           style={appleRevealStyles(isVisible, 0)}
@@ -107,60 +82,41 @@ export function Services() {
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible
                   ? "perspective(1000px) rotateX(0deg) translateY(0) scale(1)"
-                  : "perspective(1000px) rotateX(-12deg) translateY(80px) scale(0.92)",
-                filter: isVisible ? "blur(0)" : "blur(12px)",
-                transition: `all 1s cubic-bezier(0.16, 1, 0.3, 1) ${200 + index * 120}ms`,
+                  : "perspective(1000px) rotateX(-8deg) translateY(60px) scale(0.95)",
+                filter: isVisible ? "blur(0)" : "blur(10px)",
+                transition: `all 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${150 + index * 100}ms`,
               }}
             >
               {/* Badge */}
               {service.badge && (
-                <div 
-                  className="absolute top-0 right-0 p-4 z-20"
-                  style={{
-                    opacity: isVisible ? 1 : 0,
-                    transform: isVisible ? "translateY(0) scale(1)" : "translateY(-20px) scale(0.8)",
-                    transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${400 + index * 120}ms`,
-                  }}
-                >
-                  <span className="text-[10px] font-bold bg-destructive text-destructive-foreground px-3 py-1 rounded-full uppercase tracking-wider animate-pulse">
+                <div className="absolute top-0 right-0 p-4 z-20">
+                  <span className="text-[10px] font-bold bg-destructive text-destructive-foreground px-3 py-1 rounded-full uppercase tracking-wider">
                     {service.badge}
                   </span>
                 </div>
               )}
 
-              {/* Background Image with parallax */}
+              {/* Background Image */}
               <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[32px]">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-all duration-700"
-                  style={{
-                    ...appleImageRevealStyles(isVisible, 300 + index * 100),
-                    transform: isVisible 
-                      ? `scale(1) translateY(${imageParallax[index]}px)` 
-                      : "scale(1.15) translateY(30px)",
-                    opacity: isVisible ? 0.5 : 0,
-                  }}
+                  className="w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-background/30" />
               </div>
 
               {/* Content */}
               <div className="relative z-10 h-full flex flex-col justify-end">
                 <service.icon
-                  className={`w-8 h-8 md:w-10 md:h-10 ${service.iconColor} mb-5 transition-all duration-500 group-hover:scale-125 group-hover:rotate-6`}
+                  className={`w-8 h-8 md:w-10 md:h-10 ${service.iconColor} mb-5 transition-transform duration-500 group-hover:scale-110`}
                 />
-                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-snug text-sm md:text-base max-w-lg group-hover:text-muted-foreground/90 transition-colors">
+                <p className="text-muted-foreground leading-snug text-sm md:text-base max-w-lg">
                   {service.description.replace(/\*\*/g, "")}
                 </p>
-              </div>
-
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
               </div>
             </div>
           ))}
