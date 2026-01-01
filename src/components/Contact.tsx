@@ -27,33 +27,63 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
     setIsSubmitting(true);
 
-    const form = e.target as HTMLFormElement;
-    
+    toast({
+      title: "Invio in corso...",
+      description: "Sto inviando la tua richiesta.",
+    });
+
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      date: formData.date,
+      eventType: formData.eventType,
+      message: formData.message.trim(),
+    };
+
     try {
       const response = await fetch("https://formspree.io/f/xaneanjq", {
         method: "POST",
-        body: new FormData(form),
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", date: "", eventType: "", message: "" });
-      } else {
-        toast({
-          title: "Errore",
-          description: "Si è verificato un errore. Riprova più tardi.",
-          variant: "destructive",
-        });
+        return;
       }
-    } catch (error) {
+
+      let errorBody: any = null;
+      try {
+        errorBody = await response.json();
+      } catch {
+        // ignore json parsing
+      }
+
+      console.log("Formspree request failed", {
+        status: response.status,
+        statusText: response.statusText,
+        errorBody,
+        payload,
+      });
+
       toast({
-        title: "Errore",
-        description: "Si è verificato un errore. Riprova più tardi.",
+        title: "Invio non riuscito",
+        description: "Controlla i dati e riprova tra poco.",
+        variant: "destructive",
+      });
+    } catch (error) {
+      console.log("Formspree fetch error", error);
+      toast({
+        title: "Errore di rete",
+        description: "Connessione non disponibile. Riprova tra poco.",
         variant: "destructive",
       });
     } finally {
