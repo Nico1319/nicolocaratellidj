@@ -28,7 +28,7 @@ export function Story() {
                 <span className="text-primary">Roma</span>.
               </p>
               <p className="text-lg font-medium text-muted-foreground leading-relaxed">
-                Ciao! Mi chiamo Nicolò Caratelli, ho 21 anni e sono orgogliosamente di{" "}
+                Ciao! Mi chiamo Nicolò Caratelli, ho 21 anni e sono di{" "}
                 <strong className="text-foreground">Roma</strong>. Nonostante la giovane età, la mia
                 esperienza nel settore dell'intrattenimento e della musica è intensa e diversificata.
                 Con quasi 4 anni di attività professionale, ho avuto la fortuna di operare in una
