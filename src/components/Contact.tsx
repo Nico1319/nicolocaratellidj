@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { Mail, Phone } from "lucide-react";
+import { format } from "date-fns";
+import { it } from "date-fns/locale";
+import { CalendarIcon, Mail, Phone } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useScrollAnimation, appleRevealStyles, apple3DStyles } from "@/hooks/useScrollAnimation";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
 
 const eventTypes = [
   "Tipo di Evento",
@@ -20,7 +25,7 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    date: "",
+    date: undefined as Date | undefined,
     eventType: "",
     message: "",
   });
@@ -39,7 +44,7 @@ export function Contact() {
     const payload = {
       name: formData.name.trim(),
       email: formData.email.trim(),
-      date: formData.date,
+      date: formData.date ? format(formData.date, "yyyy-MM-dd") : "",
       eventType: formData.eventType,
       message: formData.message.trim(),
     };
@@ -56,7 +61,7 @@ export function Contact() {
 
       if (response.ok) {
         setIsSubmitted(true);
-        setFormData({ name: "", email: "", date: "", eventType: "", message: "" });
+        setFormData({ name: "", email: "", date: undefined, eventType: "", message: "" });
         return;
       }
 
@@ -154,13 +159,34 @@ export function Contact() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="date"
-                name="date"
-                value={formData.date}
-                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                className="w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-foreground outline-none transition-all hover:scale-[1.01] focus:scale-[1.01]"
-              />
+              <Popover>
+                <PopoverTrigger asChild>
+                  <button
+                    type="button"
+                    className={cn(
+                      "w-full bg-card border border-transparent focus:border-primary/50 rounded-xl px-5 py-4 text-left outline-none transition-all hover:scale-[1.01] focus:scale-[1.01] flex items-center justify-between",
+                      !formData.date && "text-muted-foreground"
+                    )}
+                  >
+                    {formData.date ? (
+                      format(formData.date, "d MMMM yyyy", { locale: it })
+                    ) : (
+                      <span>Seleziona data evento</span>
+                    )}
+                    <CalendarIcon className="h-5 w-5 text-muted-foreground" />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={formData.date}
+                    onSelect={(date) => setFormData({ ...formData, date })}
+                    initialFocus
+                    className="p-3 pointer-events-auto"
+                    disabled={(date) => date < new Date()}
+                  />
+                </PopoverContent>
+              </Popover>
               <select
                 name="eventType"
                 value={formData.eventType}
