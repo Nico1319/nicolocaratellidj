@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#story", label: "La Mia Storia" },
-  { href: "#about", label: "Competenze" },
-  { href: "#services", label: "Servizi" },
-  { href: "#music", label: "Listen" },
-  { href: "#social", label: "Social" },
+  { href: "#home", label: "Home", isAnchor: true },
+  { href: "#story", label: "La Mia Storia", isAnchor: true },
+  { href: "#about", label: "Competenze", isAnchor: true },
+  { href: "#services", label: "Servizi", isAnchor: true },
+  { href: "#music", label: "Listen", isAnchor: true },
+  { href: "/blog", label: "Blog", isAnchor: false },
 ];
 
 export function Navbar() {
@@ -34,26 +35,36 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="z-50">
+          <Link to="/" className="z-50">
             <img src={logoWhite} alt="Nicolò Caratelli DJ" className="h-8 w-auto" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 glass-pill px-1 py-1 rounded-full absolute left-1/2 -translate-x-1/2">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "px-5 py-2 text-xs font-medium rounded-full transition-all",
-                  index === 0
-                    ? "text-foreground hover:bg-foreground/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/10"
-                )}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link, index) =>
+              link.isAnchor ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "px-5 py-2 text-xs font-medium rounded-full transition-all",
+                    index === 0
+                      ? "text-foreground hover:bg-foreground/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-foreground/10"
+                  )}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="px-5 py-2 text-xs font-medium rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-foreground/10"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA & Mobile Menu Button */}
@@ -82,19 +93,30 @@ export function Navbar() {
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
-        {navLinks.map((link, index) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={() => setIsOpen(false)}
-            className={cn(
-              "text-3xl font-bold transition-colors",
-              index === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            {link.label}
-          </a>
-        ))}
+        {navLinks.map((link, index) =>
+          link.isAnchor ? (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={cn(
+                "text-3xl font-bold transition-colors",
+                index === 0 ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => setIsOpen(false)}
+              className="text-3xl font-bold text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </Link>
+          )
+        )}
         <a
           href="#contact"
           onClick={() => setIsOpen(false)}
