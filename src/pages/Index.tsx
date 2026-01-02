@@ -8,6 +8,7 @@ import { Music } from "@/components/Music";
 import { Social } from "@/components/Social";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
@@ -21,6 +22,7 @@ const Index = () => {
       <Social />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };
