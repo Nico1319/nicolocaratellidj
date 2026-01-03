@@ -13,13 +13,13 @@ export function About() {
             className="text-heading font-bold tracking-tight mb-4"
             style={appleRevealStyles(isVisible, 0)}
           >
-            Mastering the Vibe.
+            DJ Producer Roma: Mastering the Vibe.
           </h2>
           <p
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
             style={appleRevealStyles(isVisible, 150)}
           >
-            Le mie competenze e la mia tecnologia al servizio del tuo evento.
+            Nicolò Caratelli: le mie competenze e la mia tecnologia al servizio del tuo evento.
           </p>
         </div>
 

@@ -81,8 +81,8 @@ export function Hero() {
             transitionDelay: "400ms",
           }}
         >
-          Sound. <br />
-          <span className="text-gradient">Vision.</span>
+          Nicolò Caratelli <br />
+          <span className="text-gradient">DJ & Producer a Roma</span>
         </h1>
 
         {/* Subtitle */}
@@ -97,9 +97,9 @@ export function Hero() {
             transitionDelay: "600ms",
           }}
         >
-          La colonna sonora dei tuoi momenti più importanti.{" "}
+          DJ professionista per eventi, matrimoni, lounge bar e club a Roma.{" "}
           <br className="hidden md:block" />
-          Eleganza, energia e atmosfera.
+          La colonna sonora perfetta per il tuo evento.
         </p>
 
         {/* CTAs */}
