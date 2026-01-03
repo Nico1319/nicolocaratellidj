@@ -65,7 +65,7 @@ export function Hero() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
           <span className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">
-            Available for 2024/25
+            Available for 2026
           </span>
         </div>
 
