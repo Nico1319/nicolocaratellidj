@@ -1,17 +1,5 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.nicolocaratellidj.it/sitemap.xml
+Sitemap: https://nicolocaratellidj.it/sitemap.xml
