@@ -107,13 +107,13 @@ export function Contact() {
           className="text-heading font-bold mb-6"
           style={appleRevealStyles(isVisible, 0)}
         >
-          Let's work together.
+          Prenota il tuo DJ a Roma
         </h2>
         <p
           className="text-xl text-muted-foreground mb-12"
           style={appleRevealStyles(isVisible, 100)}
         >
-          Hai un evento in mente? Parliamone.
+          Contatta Nicolò Caratelli per il tuo prossimo evento. Parliamone.
         </p>
 
         {isSubmitted ? (

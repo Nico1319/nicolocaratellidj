@@ -70,7 +70,7 @@ export function Services() {
           className="text-heading font-bold mb-16 text-center"
           style={appleRevealStyles(isVisible, 0)}
         >
-          Esperienze su misura per il tuo successo.
+          Servizi DJ a Roma: esperienze su misura per il tuo evento.
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
