@@ -4,54 +4,38 @@ import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks
 import { Snowflake, Mountain, Music, Sun, Flame, Zap } from "lucide-react";
 import { Contact } from "@/components/Contact";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
-const features = [{
-  icon: Mountain,
-  title: "Location Uniche",
-  description: "Ski resort, chalet e rifugi d'alta quota"
-}, {
-  icon: Sun,
-  title: "Aperiski Perfetto",
-  description: "Musica calda per tramonti sulla neve"
-}, {
-  icon: Flame,
-  title: "Party Energici",
-  description: "Set che scaldano anche le notti più fredde"
-}, {
-  icon: Zap,
-  title: "Attrezzatura Pro",
-  description: "Impianti che funzionano anche a -20°"
-}];
+
+const features = [
+  { icon: Mountain, title: "Location Uniche", description: "Ski resort, chalet e rifugi d'alta quota" },
+  { icon: Sun, title: "Aperiski Perfetto", description: "Musica calda per tramonti sulla neve" },
+  { icon: Flame, title: "Party Energici", description: "Set che scaldano anche le notti più fredde" },
+  { icon: Zap, title: "Attrezzatura Pro", description: "Impianti che funzionano anche a -20°" },
+];
+
 const ApresSki = () => {
-  const {
-    ref: heroRef,
-    isVisible: heroVisible
-  } = useScrollAnimation<HTMLElement>({
-    threshold: 0.1
-  });
-  const {
-    ref: featuresRef,
-    isVisible: featuresVisible
-  } = useScrollAnimation<HTMLElement>({
-    threshold: 0.1
-  });
-  const {
-    ref: contentRef,
-    isVisible: contentVisible
-  } = useScrollAnimation<HTMLElement>({
-    threshold: 0.1
-  });
-  return <Layout title="Winter Party & Après-ski: Energia ad Alta Quota | Nicolò Caratelli" description="DJ per après ski e winter party. Musica ad alta quota per ski resort, chalet e rifugi. Creo l'atmosfera perfetta per i tuoi eventi invernali." canonical="/servizi/apres-ski-winter-party">
-      <JsonLd schema={{
-      type: "ProfessionalService",
-      name: "DJ Après Ski & Winter Party - Nicolò Caratelli",
-      description: "DJ per après ski e winter party in ski resort, chalet e rifugi d'alta quota.",
-      url: "https://nicolocaratellidj.it/servizi/apres-ski-winter-party",
-      provider: {
-        name: "Nicolò Caratelli",
-        url: "https://nicolocaratellidj.it"
-      },
-      serviceType: "Winter Events DJ Services"
-    }} />
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const { ref: featuresRef, isVisible: featuresVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
+  return (
+    <Layout
+      title="Winter Party & Après-ski: Energia ad Alta Quota | Nicolò Caratelli"
+      description="DJ per après ski e winter party. Musica ad alta quota per ski resort, chalet e rifugi. Creo l'atmosfera perfetta per i tuoi eventi invernali."
+      canonical="/servizi/apres-ski-winter-party"
+    >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "DJ Après Ski & Winter Party - Nicolò Caratelli",
+          description: "DJ per après ski e winter party in ski resort, chalet e rifugi d'alta quota.",
+          url: "https://nicolocaratellidj.it/servizi/apres-ski-winter-party",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Winter Events DJ Services",
+        }}
+      />
 
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
@@ -64,8 +48,9 @@ const ApresSki = () => {
                 <Snowflake className="w-4 h-4" />
                 <span>Servizi DJ Roma</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Apréski &
-Winter Party<span className="block text-primary">Winter Party</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Aperiski &
+                <span className="block text-primary">Winter Party</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                 DJ set ad alta quota per ski-resort e chalet. Musica dinamica per 
@@ -144,16 +129,19 @@ Winter Party<span className="block text-primary">Winter Party</span>
       <Contact />
 
       {/* Hidden SEO Content - CSS hidden for crawler indexing */}
-      <div className="overflow-hidden" style={{
-      maxHeight: 0,
-      opacity: 0
-    }} aria-hidden="true">
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           DJ per après ski e winter party. Nicolò Caratelli porta la sua musica nei migliori 
           ski resort e chalet. DJ montagna, musica après ski, winter party DJ, eventi invernali, 
           DJ chalet, musica rifugio, aperiski Roma.
         </p>
       </div>
-    </Layout>;
+    </Layout>
+  );
 };
+
 export default ApresSki;
