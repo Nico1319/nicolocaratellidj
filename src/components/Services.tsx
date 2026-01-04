@@ -22,7 +22,7 @@ const services = [
   },
   {
     icon: Snowflake,
-    title: "Aperiski / Winter Party",
+    title: "Aprés-ski",
     description:
       "DJ set ad alta quota per ski-resort e chalet. Musica dinamica per creare il perfetto après-ski o l'atmosfera giusta per i tuoi party invernali.",
     image: aperiskiImage,
