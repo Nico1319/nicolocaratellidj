@@ -69,11 +69,13 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Hidden SEO text */}
-        <span className="sr-only">Nicolò Caratelli - DJ e Producer professionista a Roma</span>
+        {/* H1 SEO - Visually hidden but indexable */}
+        <h1 className="sr-only">
+          Nicolò Caratelli | DJ & Producer Roma - Matrimoni, Club ed Eventi Esclusivi
+        </h1>
         
-        {/* Main Title */}
-        <h1
+        {/* Main Visual Title */}
+        <p
           className={`text-display font-bold tracking-tighter text-foreground mb-6 leading-[0.9] transition-all duration-1000 ${
             isLoaded
               ? "opacity-100 translate-y-0 scale-100"
@@ -83,10 +85,11 @@ export function Hero() {
             filter: isLoaded ? "blur(0)" : "blur(15px)",
             transitionDelay: "400ms",
           }}
+          aria-hidden="true"
         >
           Sound. <br />
           <span className="text-gradient">Vision.</span>
-        </h1>
+        </p>
 
         {/* Subtitle */}
         <p

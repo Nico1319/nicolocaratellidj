@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Music, Headphones, Radio, Disc, Award, Users } from "lucide-react";
+import { Contact } from "@/components/Contact";
 
 const skills = [
   { icon: Headphones, title: "DJ Set", description: "Mix professionali su qualsiasi genere musicale" },
@@ -23,12 +25,22 @@ const ChiSono = () => {
       description="Scopri la storia di Nicolò Caratelli, DJ e Producer professionista a Roma. 4 anni di esperienza in eventi, matrimoni, lounge bar e club della capitale."
       canonical="/chi-sono"
     >
+      <JsonLd
+        schema={{
+          type: "Person",
+          name: "Nicolò Caratelli",
+          jobTitle: "DJ & Music Producer",
+          url: "https://nicolocaratellidj.it/chi-sono",
+          description: "DJ e Producer professionista a Roma con 4 anni di esperienza in matrimoni, eventi privati, lounge bar e club.",
+        }}
+      />
+
       {/* Hero Section */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          {/* H1 SEO nascosto */}
+          {/* H1 SEO */}
           <h1 className="sr-only">
-            Nicolò Caratelli | DJ & Producer Roma - Matrimoni, Club ed Eventi Esclusivi
+            Nicolò Caratelli: Passione, Musica e Professionalità
           </h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -169,26 +181,15 @@ const ChiSono = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Pronto a collaborare?
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contattami per discutere del tuo prossimo evento a Roma.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Richiedi un Preventivo
-          </a>
-        </div>
-      </section>
+      {/* Contact Section for Conversion */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden, not conditionally removed */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           Nicolò Caratelli è un DJ professionista con sede a Roma, specializzato in eventi musicali 
           di alta qualità. Con quasi 4 anni di esperienza, offre servizi DJ per matrimoni, feste 

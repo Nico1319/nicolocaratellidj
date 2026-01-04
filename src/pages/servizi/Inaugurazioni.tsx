@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Megaphone, Store, Users, Sparkles, Target, TrendingUp } from "lucide-react";
+import { Contact } from "@/components/Contact";
 import inaugurazioniImage from "@/assets/inaugurazioni.jpg";
 
 const benefits = [
@@ -26,14 +28,28 @@ const Inaugurazioni = () => {
 
   return (
     <Layout
-      title="DJ Inaugurazioni Roma | Eventi Corporate - Nicolò Caratelli"
+      title="Eventi Corporate, Retail e Inaugurazioni | Nicolò Caratelli DJ Roma"
       description="DJ per inaugurazioni commerciali, opening e eventi corporate a Roma. Sound design professionale per il lancio del tuo brand. Massima visibilità garantita."
       canonical="/servizi/inaugurazioni-commerciali"
     >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "DJ Eventi Corporate e Inaugurazioni - Nicolò Caratelli",
+          description: "DJ per inaugurazioni commerciali, opening e eventi corporate a Roma.",
+          url: "https://nicolocaratellidj.it/servizi/inaugurazioni-commerciali",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Corporate Events DJ Services",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">DJ Inaugurazioni Roma - Eventi Corporate e Lanci Brand</h1>
+          <h1 className="sr-only">Eventi Corporate, Retail e Inaugurazioni</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -153,26 +169,15 @@ const Inaugurazioni = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Lancia il Tuo Brand con Stile
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contattami per discutere del tuo prossimo evento corporate.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Parliamo del Tuo Evento
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           DJ per inaugurazioni commerciali e eventi corporate a Roma. Nicolò Caratelli offre 
           sound design professionale per opening, lanci prodotto e fiere. DJ evento aziendale Roma, 

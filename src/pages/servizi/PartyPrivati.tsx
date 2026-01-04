@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { PartyPopper, Music, Mic2, Lightbulb, Gift, Star } from "lucide-react";
+import { Contact } from "@/components/Contact";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
 
 const features = [
@@ -26,14 +28,28 @@ const PartyPrivati = () => {
 
   return (
     <Layout
-      title="DJ Party Privati Roma | Feste 18 anni - Nicolò Caratelli"
+      title="Feste Private, 18esimi e Anniversari a Roma | Nicolò Caratelli DJ"
       description="DJ per party privati a Roma. 18esimi, feste di laurea e compleanni esclusivi. Trasforma la tua festa in un evento leggendario con musica e luci professionali."
       canonical="/servizi/party-privati-esclusivi"
     >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "DJ Party Privati Roma - Nicolò Caratelli",
+          description: "DJ per party privati, feste 18 anni, lauree e compleanni a Roma.",
+          url: "https://nicolocaratellidj.it/servizi/party-privati-esclusivi",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Private Party DJ Services",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">DJ Party Privati Roma - Feste 18 anni, Laurea e Compleanni</h1>
+          <h1 className="sr-only">Feste Private, 18esimi e Anniversari a Roma</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -153,26 +169,15 @@ const PartyPrivati = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Crea il Tuo Party Perfetto
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contattami per un preventivo gratuito e iniziamo a pianificare.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Richiedi Preventivo
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           DJ per party privati e feste a Roma. Nicolò Caratelli anima 18esimi, feste di laurea 
           e compleanni con musica e luci professionali. DJ festa 18 anni Roma, DJ laurea Roma, 

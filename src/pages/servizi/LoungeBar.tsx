@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Coffee, Music, TrendingUp, Clock, Sparkles, Wine } from "lucide-react";
+import { Contact } from "@/components/Contact";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 
 const benefits = [
@@ -21,14 +23,28 @@ const LoungeBar = () => {
 
   return (
     <Layout
-      title="DJ Lounge Bar Roma | Musica Aperitivo - Nicolò Caratelli"
+      title="DJ Set per Lounge Bar, Hotel e Aperitivi | Nicolò Caratelli Roma"
       description="DJ specializzato in lounge bar e aperitivi a Roma. Deep House, Nu Disco e Chillout per creare l'atmosfera perfetta nel tuo locale. Aumenta la permanenza dei clienti."
       canonical="/servizi/lounge-bar-aperitivi"
     >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "DJ Lounge Bar Roma - Nicolò Caratelli",
+          description: "DJ per lounge bar, hotel e aperitivi a Roma. Musica Deep House, Nu Disco e Chillout.",
+          url: "https://nicolocaratellidj.it/servizi/lounge-bar-aperitivi",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Lounge DJ Services",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">DJ Lounge Bar Roma - Musica Aperitivo e Happy Hour Professionale</h1>
+          <h1 className="sr-only">DJ Set per Lounge Bar, Hotel e Aperitivi</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -146,26 +162,15 @@ const LoungeBar = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Trasforma il Tuo Locale
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contattami per una prova senza impegno e scopri la differenza.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Richiedi Informazioni
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           DJ per lounge bar e aperitivi a Roma. Nicolò Caratelli offre servizi DJ professionali 
           per locali, bar e ristoranti. Specializzato in Deep House, Nu Disco, Chillout. 
