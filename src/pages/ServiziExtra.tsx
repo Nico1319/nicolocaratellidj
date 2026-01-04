@@ -4,6 +4,7 @@ import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks
 import { Camera, Video, Sparkles, Printer, Users, Heart } from "lucide-react";
 import { Contact } from "@/components/Contact";
 import photoboothHeroImage from "@/assets/photobooth-hero.jpg";
+import fotografoEventiImage from "@/assets/fotografo-eventi.jpg";
 
 const services = [
   {
@@ -31,7 +32,7 @@ const services = [
       "Galleria online privata",
       "File ad alta risoluzione",
     ],
-    image: "/lovable-uploads/5d795b98-656f-41dd-83bf-2d51608a98c4.jpg",
+    image: fotografoEventiImage,
     color: "text-destructive",
   },
   {
