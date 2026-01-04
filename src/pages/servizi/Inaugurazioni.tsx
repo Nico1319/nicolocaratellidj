@@ -1,0 +1,186 @@
+import { Layout } from "@/components/Layout";
+import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
+import { Megaphone, Store, Users, Sparkles, Target, TrendingUp } from "lucide-react";
+import inaugurazioniImage from "@/assets/inaugurazioni.jpg";
+
+const benefits = [
+  { icon: Store, title: "Brand Experience", description: "Musica allineata alla tua identità aziendale" },
+  { icon: Users, title: "Engagement", description: "Coinvolgimento attivo dei tuoi ospiti" },
+  { icon: Target, title: "Visibilità", description: "Evento memorabile che lascia il segno" },
+  { icon: TrendingUp, title: "ROI Musicale", description: "La colonna sonora che vende" },
+];
+
+const eventTypes = [
+  "Inaugurazioni negozi",
+  "Opening showroom",
+  "Lanci prodotto",
+  "Fiere ed expo",
+  "Eventi corporate",
+  "Press day",
+];
+
+const Inaugurazioni = () => {
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const { ref: benefitsRef, isVisible: benefitsVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
+  return (
+    <Layout
+      title="DJ Inaugurazioni Roma | Eventi Corporate - Nicolò Caratelli"
+      description="DJ per inaugurazioni commerciali, opening e eventi corporate a Roma. Sound design professionale per il lancio del tuo brand. Massima visibilità garantita."
+      canonical="/servizi/inaugurazioni-commerciali"
+    >
+      {/* Hero */}
+      <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <h1 className="sr-only">DJ Inaugurazioni Roma - Eventi Corporate e Lanci Brand</h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div style={appleSlideStyles(heroVisible, "left", 0)}>
+              <div className="inline-flex items-center gap-2 text-muted-foreground text-sm mb-4">
+                <Megaphone className="w-4 h-4" />
+                <span>Servizi DJ Roma</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Inaugurazioni
+                <span className="block text-primary">Commerciali</span>
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                Sound design mirato per il lancio di nuovi negozi, showroom, fiere 
+                ed eventi corporate. Massima visibilità e coinvolgimento per il 
+                tuo brand con la colonna sonora perfetta.
+              </p>
+              <a
+                href="/#contact"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
+              >
+                Richiedi Preventivo
+              </a>
+            </div>
+            <div
+              className="relative rounded-[40px] overflow-hidden shadow-2xl"
+              style={appleSlideStyles(heroVisible, "right", 200)}
+            >
+              <img
+                src={inaugurazioniImage}
+                alt="DJ inaugurazione negozio Roma - Evento corporate con Nicolò Caratelli"
+                className="w-full h-full object-cover aspect-[4/5]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section ref={benefitsRef} className="py-24 bg-secondary overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <h2
+            className="text-3xl font-bold text-foreground text-center mb-16"
+            style={appleRevealStyles(benefitsVisible, 0)}
+          >
+            Perché la Musica Conta per il Tuo Brand
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => (
+              <div
+                key={benefit.title}
+                className="glass-card rounded-2xl p-8 text-center"
+                style={{
+                  opacity: benefitsVisible ? 1 : 0,
+                  transform: benefitsVisible ? "translateY(0)" : "translateY(40px)",
+                  transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${100 + index * 80}ms`,
+                }}
+              >
+                <benefit.icon className="w-10 h-10 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground text-sm">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section ref={contentRef} className="py-24 bg-background overflow-hidden">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="space-y-8" style={appleRevealStyles(contentVisible, 0)}>
+            <h2 className="text-3xl font-bold text-foreground text-center mb-8">
+              Sound Design per il Successo
+            </h2>
+            
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Un'inaugurazione commerciale è molto più di un taglio del nastro: è il momento 
+              in cui il tuo brand si presenta al mondo. Come <strong className="text-foreground">
+              DJ per eventi corporate a Roma</strong>, so quanto la musica influenzi la 
+              percezione del pubblico e la memorabilità dell'esperienza.
+            </p>
+            
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Il mio approccio al sound design commerciale parte dall'analisi del brand: 
+              qual è il tuo target? Qual è il messaggio che vuoi comunicare? Quale atmosfera 
+              rappresenta al meglio i tuoi valori? Sulla base di queste risposte, costruisco 
+              una <strong className="text-foreground">playlist personalizzata</strong> che 
+              diventa parte integrante della tua strategia di comunicazione.
+            </p>
+
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Che si tratti dell'opening di un flagship store, di un lancio prodotto o di 
+              una fiera, garantisco un servizio professionale che include <strong className="text-foreground">
+              consulenza pre-evento</strong>, <strong className="text-foreground">attrezzatura 
+              audio di alta qualità</strong> e la capacità di adattarmi in tempo reale 
+              alle esigenze del momento. Il risultato? Un evento che i tuoi ospiti ricorderanno.
+            </p>
+          </div>
+
+          {/* Event Types */}
+          <div className="mt-16" style={appleRevealStyles(contentVisible, 300)}>
+            <h3 className="text-xl font-bold text-foreground text-center mb-8">
+              Tipologie di Eventi
+            </h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {eventTypes.map((type) => (
+                <span
+                  key={type}
+                  className="px-4 py-2 rounded-full bg-secondary text-foreground text-sm font-medium"
+                >
+                  {type}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-6 max-w-3xl text-center">
+          <h2 className="text-3xl font-bold text-foreground mb-6">
+            Lancia il Tuo Brand con Stile
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Contattami per discutere del tuo prossimo evento corporate.
+          </p>
+          <a
+            href="/#contact"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
+          >
+            Parliamo del Tuo Evento
+          </a>
+        </div>
+      </section>
+
+      {/* Hidden SEO Content */}
+      <div className="sr-only" aria-hidden="true">
+        <p>
+          DJ per inaugurazioni commerciali e eventi corporate a Roma. Nicolò Caratelli offre 
+          sound design professionale per opening, lanci prodotto e fiere. DJ evento aziendale Roma, 
+          musica inaugurazione negozio, DJ corporate Roma, service audio eventi Roma.
+        </p>
+      </div>
+    </Layout>
+  );
+};
+
+export default Inaugurazioni;

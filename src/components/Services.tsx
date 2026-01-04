@@ -1,4 +1,5 @@
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
@@ -17,6 +18,7 @@ const services = [
     borderColor: "border-t-destructive/50",
     iconColor: "text-destructive",
     badge: "TOP FOCUS COMMERCIALE",
+    href: "/servizi/lounge-bar-aperitivi",
   },
   {
     icon: Snowflake,
@@ -27,6 +29,7 @@ const services = [
     colSpan: "md:col-span-1",
     borderColor: "border-t-destructive/30",
     iconColor: "text-destructive",
+    href: "/servizi/apres-ski-winter-party",
   },
   {
     icon: Megaphone,
@@ -37,6 +40,7 @@ const services = [
     colSpan: "md:col-span-1",
     borderColor: "border-t-border/30",
     iconColor: "text-foreground",
+    href: "/servizi/inaugurazioni-commerciali",
   },
   {
     icon: PartyPopper,
@@ -47,6 +51,7 @@ const services = [
     colSpan: "md:col-span-2",
     borderColor: "border-t-primary/30",
     iconColor: "text-primary",
+    href: "/servizi/party-privati-esclusivi",
   },
   {
     icon: HeartHandshake,
@@ -57,6 +62,7 @@ const services = [
     colSpan: "md:col-span-3",
     borderColor: "border-t-muted-foreground/30",
     iconColor: "text-muted-foreground",
+    href: "/servizi/wedding-dj",
   },
 ];
 
@@ -75,9 +81,10 @@ export function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
+            <Link
               key={service.title}
-              className={`col-span-1 ${service.colSpan} glass-card rounded-[32px] p-8 md:p-10 relative overflow-hidden group min-h-[350px] border-t-4 ${service.borderColor}`}
+              to={service.href}
+              className={`col-span-1 ${service.colSpan} glass-card rounded-[32px] p-8 md:p-10 relative overflow-hidden group min-h-[350px] border-t-4 ${service.borderColor} cursor-pointer`}
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible
@@ -100,7 +107,7 @@ export function Services() {
               <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[32px]">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={`DJ ${service.title} Roma - Nicolò Caratelli`}
                   className="w-full h-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-background/30" />
@@ -117,8 +124,11 @@ export function Services() {
                 <p className="text-muted-foreground leading-snug text-sm md:text-base max-w-lg">
                   {service.description.replace(/\*\*/g, "")}
                 </p>
+                <span className="mt-4 text-primary text-sm font-semibold group-hover:underline">
+                  Scopri di più →
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

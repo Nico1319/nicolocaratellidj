@@ -1,4 +1,5 @@
-import { Instagram, Music, Cloud, Youtube } from "lucide-react";
+import { Instagram, Music, Cloud, Youtube, Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 
 const socialLinks = [
@@ -8,39 +9,107 @@ const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/@nicolocaratellidj", label: "YouTube" },
 ];
 
+const sitemapLinks = [
+  { href: "/", label: "Home" },
+  { href: "/chi-sono", label: "Chi Sono" },
+  { href: "/servizi/wedding-dj", label: "Wedding DJ" },
+  { href: "/servizi/lounge-bar-aperitivi", label: "Lounge Bar & Aperitivi" },
+  { href: "/servizi/apres-ski-winter-party", label: "Aperiski & Winter Party" },
+  { href: "/servizi/inaugurazioni-commerciali", label: "Inaugurazioni" },
+  { href: "/servizi/party-privati-esclusivi", label: "Party Privati" },
+  { href: "/servizi-extra", label: "Servizi Extra" },
+  { href: "/produzioni-musicali", label: "Produzioni Musicali" },
+  { href: "/blog", label: "Blog" },
+];
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const { ref: footerRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.3 });
+  const { ref: footerRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
 
   return (
     <footer
       ref={footerRef}
-      className="bg-background py-12 border-t border-border/30 text-xs text-muted-foreground overflow-hidden"
+      className="bg-secondary py-16 border-t border-border/30 overflow-hidden"
     >
-      <div
-        className="container mx-auto px-6 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6"
-        style={appleRevealStyles(isVisible, 0)}
-      >
-        <p>© {currentYear} Nicolò Caratelli DJ. All rights reserved.</p>
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+          style={appleRevealStyles(isVisible, 0)}
+        >
+          {/* Brand */}
+          <div>
+            <h3 className="text-xl font-bold text-foreground mb-4">Nicolò Caratelli</h3>
+            <p className="text-muted-foreground text-sm mb-6">
+              DJ & Producer professionista a Roma. Musica per matrimoni, eventi, 
+              lounge bar e club.
+            </p>
+            <div className="flex gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-all hover:scale-125 duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-        <div className="flex gap-6">
-          {socialLinks.map((social, index) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-all hover:scale-125 duration-300"
-              aria-label={social.label}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(10px)",
-                transition: `all 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${100 + index * 50}ms`,
-              }}
-            >
-              <social.icon className="w-5 h-5" />
-            </a>
-          ))}
+          {/* Sitemap */}
+          <div className="lg:col-span-2">
+            <h3 className="text-lg font-semibold text-foreground mb-4">Mappa del Sito</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {sitemapLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-4">Contatti</h3>
+            <div className="space-y-3">
+              <a
+                href="tel:+393920712401"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                +39 392 071 2401
+              </a>
+              <a
+                href="mailto:djnicolo.caratelli@libero.it"
+                className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                djnicolo.caratelli@libero.it
+              </a>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4" />
+                Roma, Italia
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div
+          className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground"
+          style={appleRevealStyles(isVisible, 200)}
+        >
+          <p>© {currentYear} Nicolò Caratelli DJ. All rights reserved.</p>
+          <p>
+            DJ Roma • Musica Eventi • Service Audio Luci
+          </p>
         </div>
       </div>
     </footer>
