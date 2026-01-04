@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Camera, Video, Sparkles, Printer, Users, Heart } from "lucide-react";
+import { Contact } from "@/components/Contact";
 import photoboothHeroImage from "@/assets/photobooth-hero.jpg";
 
 const services = [
@@ -54,14 +56,28 @@ const ServiziExtra = () => {
 
   return (
     <Layout
-      title="Servizi Extra | Photo Booth, Foto e Video Roma - Nicolò Caratelli"
+      title="Servizi Extra per Eventi: Photo Booth, Foto e Video | Nicolò Caratelli Roma"
       description="Servizi extra per eventi a Roma: Mirror Photo Booth interattivo, fotografo professionale e video maker 4K. Completa il tuo evento con ricordi indimenticabili."
       canonical="/servizi-extra"
     >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "Servizi Extra Eventi Roma - Photo Booth, Foto e Video",
+          description: "Mirror Photo Booth interattivo, fotografo professionale e video maker 4K per eventi a Roma.",
+          url: "https://nicolocaratellidj.it/servizi-extra",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Event Photography and Video Services",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl text-center">
-          <h1 className="sr-only">Servizi Extra Eventi Roma - Photo Booth, Fotografo e Video Maker</h1>
+          <h1 className="sr-only">Servizi Extra per Eventi: Photo Booth, Foto e Video</h1>
           
           <div style={appleRevealStyles(heroVisible, 0)}>
             <span className="text-primary text-sm font-semibold uppercase tracking-wider mb-4 block">
@@ -101,7 +117,8 @@ const ServiziExtra = () => {
                     <service.icon className="w-5 h-5" />
                     <span className="font-semibold uppercase tracking-wider">Servizio Premium</span>
                   </div>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">{service.title}</h3>
+                  {/* H2 for each service */}
+                  <h2 className="text-3xl font-bold text-foreground mb-4">{service.title}</h2>
                   <p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
                   
                   <ul className="space-y-3 mb-8">
@@ -135,27 +152,22 @@ const ServiziExtra = () => {
         </div>
       </section>
 
-      {/* Package CTA */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-6 max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Pacchetti Combinati
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Combina più servizi per ottenere il massimo dal tuo evento. 
-            Sconti speciali per pacchetti completi: DJ + Photo Booth + Foto + Video.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Richiedi Preventivo Pacchetto
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
+        <h3>Mirror Photo Booth Roma</h3>
+        <p>Noleggio Mirror Photo Booth interattivo con stampa immediata per matrimoni, feste ed eventi aziendali.</p>
+        
+        <h3>Fotografo Eventi Roma</h3>
+        <p>Servizio fotografico professionale per eventi, reportage e ritratti con post-produzione inclusa.</p>
+        
+        <h3>Video Maker Eventi Roma</h3>
         <p>
           Servizi extra per eventi a Roma: Mirror Photo Booth interattivo con stampa immediata, 
           fotografo professionista per reportage eventi, video maker per aftermovie 4K. 

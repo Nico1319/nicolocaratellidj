@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { HeartHandshake, Music, Clock, Star, CheckCircle2, Users } from "lucide-react";
+import { Contact } from "@/components/Contact";
 import weddingDjImage from "@/assets/wedding-dj.jpg";
 
 const features = [
@@ -27,14 +29,28 @@ const WeddingDJ = () => {
 
   return (
     <Layout
-      title="Wedding DJ Roma | Musica Matrimonio - Nicolò Caratelli"
+      title="DJ per Matrimoni a Roma e Provincia | Wedding DJ - Nicolò Caratelli"
       description="Servizio Wedding DJ professionale a Roma. Musica elegante per cerimonia, aperitivo e party serale. La colonna sonora perfetta per il vostro giorno più bello."
       canonical="/servizi/wedding-dj"
     >
+      <JsonLd
+        schema={{
+          type: "ProfessionalService",
+          name: "Wedding DJ Roma - Nicolò Caratelli",
+          description: "Servizio Wedding DJ professionale a Roma e provincia. Musica per cerimonia, aperitivo e party serale.",
+          url: "https://nicolocaratellidj.it/servizi/wedding-dj",
+          provider: {
+            name: "Nicolò Caratelli",
+            url: "https://nicolocaratellidj.it",
+          },
+          serviceType: "Wedding DJ Services",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">Wedding DJ Roma - Servizio Musica Matrimonio Professionale</h1>
+          <h1 className="sr-only">DJ per Matrimoni a Roma e Provincia</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -46,11 +62,15 @@ const WeddingDJ = () => {
                 Wedding DJ
                 <span className="block text-primary">Il Vostro Giorno Speciale</span>
               </h2>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                La colonna sonora del vostro matrimonio merita la massima attenzione. 
-                Creo atmosfere uniche dalla cerimonia al party serale, trasformando 
-                ogni momento in un ricordo indimenticabile.
-              </p>
+              
+              {/* Sottosezioni H3 per SEO */}
+              <div className="space-y-4 mb-8">
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  La colonna sonora del vostro matrimonio merita la massima attenzione. 
+                  Creo atmosfere uniche dalla cerimonia al party serale, trasformando 
+                  ogni momento in un ricordo indimenticabile.
+                </p>
+              </div>
               <a
                 href="/#contact"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
@@ -163,26 +183,22 @@ const WeddingDJ = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Iniziamo a Pianificare il Vostro Matrimonio
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Contattatemi per un incontro conoscitivo gratuito e senza impegno.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Prenota una Consulenza
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
+        <h3>Servizio Cerimonia Matrimonio</h3>
+        <p>Musica soft e romantica per la cerimonia, ingresso sposa, scambio anelli e uscita sposi.</p>
+        
+        <h3>Aperitivo Matrimonio</h3>
+        <p>DJ set elegante per l'aperitivo: lounge, jazz e bossa nova per accogliere gli ospiti.</p>
+        
+        <h3>Party Serale Matrimonio</h3>
         <p>
           Servizio Wedding DJ professionale a Roma e provincia. Nicolò Caratelli offre musica 
           per matrimoni con esperienza, passione e attrezzatura di alta qualità. DJ matrimonio Roma, 

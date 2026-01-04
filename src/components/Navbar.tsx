@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
@@ -13,18 +13,20 @@ const servicesLinks = [
   { href: "/servizi-extra", label: "Servizi Extra" },
 ];
 
-const navLinks = [
-  { href: "/#home", label: "Home", isAnchor: true },
-  { href: "/#story", label: "La Mia Storia", isAnchor: true },
+// Navbar order: Home | Chi Sono | Servizi (Dropdown) | Produzioni | Contatti
+const navLinksDesktop = [
+  { href: "/", label: "Home", isAnchor: false },
   { href: "/chi-sono", label: "Chi Sono", isAnchor: false },
-  { href: "/#music", label: "Listen", isAnchor: true },
-  { href: "/blog", label: "Blog", isAnchor: false },
+  // Servizi dropdown inserted separately
+  { href: "/produzioni-musicali", label: "Produzioni", isAnchor: false },
+  { href: "/#contact", label: "Contatti", isAnchor: true },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
@@ -40,6 +42,7 @@ export function Navbar() {
   useEffect(() => {
     setIsOpen(false);
     setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [location.pathname]);
 
   // Smart anchor handling - redirect to home if not on homepage
@@ -73,42 +76,47 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="z-50">
-            <img src={logoWhite} alt="Nicolò Caratelli DJ" className="h-8 w-auto" />
+            <img src={logoWhite} alt="Nicolò Caratelli DJ Logo" className="h-8 w-auto" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Order: Home | Chi Sono | Servizi | Produzioni | Contatti */}
           <nav className="hidden lg:flex items-center gap-1 glass-pill px-1 py-1 rounded-full absolute left-1/2 -translate-x-1/2">
-            {navLinks.slice(0, 2).map((link) =>
-              link.isAnchor ? (
-                <a
-                  key={link.href}
-                  href={getAnchorHref(link.href)}
-                  onClick={(e) => handleAnchorClick(e, link.href)}
-                  className="px-4 py-2 text-xs font-medium rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-foreground/10"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
-                    location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {/* Home */}
+            <Link
+              to="/"
+              className={cn(
+                "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
+                location.pathname === "/"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Home
+            </Link>
+
+            {/* Chi Sono */}
+            <Link
+              to="/chi-sono"
+              className={cn(
+                "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
+                location.pathname === "/chi-sono"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Chi Sono
+            </Link>
 
             {/* Services Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setServicesOpen(!servicesOpen)}
-                className="px-4 py-2 text-xs font-medium rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-foreground/10 flex items-center gap-1"
+                className={cn(
+                  "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10 flex items-center gap-1",
+                  location.pathname.startsWith("/servizi")
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
               >
                 Servizi
                 <ChevronDown className={cn("w-3 h-3 transition-transform", servicesOpen && "rotate-180")} />
@@ -135,31 +143,27 @@ export function Navbar() {
               )}
             </div>
 
-            {navLinks.slice(2).map((link) =>
-              link.isAnchor ? (
-                <a
-                  key={link.href}
-                  href={getAnchorHref(link.href)}
-                  onClick={(e) => handleAnchorClick(e, link.href)}
-                  className="px-4 py-2 text-xs font-medium rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-foreground/10"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
-                    location.pathname === link.href
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
+            {/* Produzioni */}
+            <Link
+              to="/produzioni-musicali"
+              className={cn(
+                "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
+                location.pathname === "/produzioni-musicali"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Produzioni
+            </Link>
+
+            {/* Contatti - Anchor link */}
+            <a
+              href={getAnchorHref("/#contact")}
+              onClick={(e) => handleAnchorClick(e, "/#contact")}
+              className="px-4 py-2 text-xs font-medium rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-foreground/10"
+            >
+              Contatti
+            </a>
           </nav>
 
           {/* CTA & Mobile Menu Button */}
@@ -192,7 +196,7 @@ export function Navbar() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-6 transition-opacity duration-500 lg:hidden overflow-y-auto py-20",
+          "fixed inset-0 bg-background z-40 flex flex-col items-center justify-center gap-4 transition-opacity duration-500 lg:hidden overflow-y-auto py-20",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -212,20 +216,40 @@ export function Navbar() {
           Chi Sono
         </Link>
 
-        {/* Mobile Services Section */}
-        <div className="text-center">
-          <span className="text-lg font-semibold text-muted-foreground mb-4 block">Servizi</span>
-          <div className="flex flex-col gap-3">
-            {servicesLinks.map((service) => (
-              <Link
-                key={service.href}
-                to={service.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {service.label}
-              </Link>
-            ))}
+        {/* Mobile Services Accordion - Closed by default */}
+        <div className="text-center w-full max-w-xs">
+          <button
+            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+            className="text-2xl font-bold text-muted-foreground hover:text-foreground transition-colors flex items-center justify-center gap-2 w-full"
+          >
+            Servizi
+            <ChevronRight 
+              className={cn(
+                "w-5 h-5 transition-transform duration-300",
+                mobileServicesOpen && "rotate-90"
+              )} 
+            />
+          </button>
+          
+          {/* Accordion Content */}
+          <div
+            className={cn(
+              "overflow-hidden transition-all duration-300 ease-out",
+              mobileServicesOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
+            )}
+          >
+            <div className="flex flex-col gap-3 pb-2">
+              {servicesLinks.map((service) => (
+                <Link
+                  key={service.href}
+                  to={service.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {service.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 

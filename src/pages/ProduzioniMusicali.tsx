@@ -1,6 +1,8 @@
 import { Layout } from "@/components/Layout";
+import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Music, Headphones, Radio, Disc, Play, ExternalLink } from "lucide-react";
+import { Contact } from "@/components/Contact";
 
 const tracks = [
   {
@@ -42,14 +44,24 @@ const ProduzioniMusicali = () => {
 
   return (
     <Layout
-      title="Produzioni Musicali | Remix e Tracce Originali - Nicolò Caratelli"
+      title="Produzioni Musicali, Remix e Sound Design | Nicolò Caratelli Roma"
       description="Scopri le produzioni musicali di Nicolò Caratelli: remix, tracce originali e mashup. Deep House, Tech House e Nu Disco made in Roma."
       canonical="/produzioni-musicali"
     >
+      <JsonLd
+        schema={{
+          type: "Person",
+          name: "Nicolò Caratelli",
+          jobTitle: "Music Producer & DJ",
+          url: "https://nicolocaratellidj.it/produzioni-musicali",
+          description: "Producer musicale specializzato in Deep House, Tech House e Nu Disco. Remix e tracce originali.",
+        }}
+      />
+
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">Produzioni Musicali Nicolò Caratelli - Remix e Tracce Originali</h1>
+          <h1 className="sr-only">Produzioni Musicali, Remix e Sound Design</h1>
           
           <div className="text-center" style={appleRevealStyles(heroVisible, 0)}>
             <span className="text-primary text-sm font-semibold uppercase tracking-wider mb-4 block">
@@ -169,28 +181,15 @@ const ProduzioniMusicali = () => {
         </div>
       </section>
 
-      {/* Collaboration CTA */}
-      <section className="py-24 bg-secondary">
-        <div className="container mx-auto px-6 max-w-3xl text-center">
-          <Headphones className="w-12 h-12 text-primary mx-auto mb-6" />
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            Collaboriamo
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Hai un progetto musicale in mente? Sono aperto a collaborazioni 
-            per remix, produzioni e progetti creativi.
-          </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
-            Contattami per Collaborare
-          </a>
-        </div>
-      </section>
+      {/* Contact Section */}
+      <Contact />
 
-      {/* Hidden SEO Content */}
-      <div className="sr-only" aria-hidden="true">
+      {/* Hidden SEO Content - CSS hidden for crawler indexing */}
+      <div 
+        className="overflow-hidden" 
+        style={{ maxHeight: 0, opacity: 0 }}
+        aria-hidden="true"
+      >
         <p>
           Produzioni musicali di Nicolò Caratelli: remix, tracce originali e mashup. 
           Producer Roma, produzione Deep House, Tech House producer, Nu Disco, 
