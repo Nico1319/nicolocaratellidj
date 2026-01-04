@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Camera, Video, Sparkles, Printer, Users, Heart } from "lucide-react";
 import { Contact } from "@/components/Contact";
+import { PhotoBooth } from "@/components/PhotoBooth";
 import photoboothHeroImage from "@/assets/photobooth-hero.jpg";
 import fotografoEventiImage from "@/assets/fotografo-eventi.jpg";
 
@@ -152,6 +153,9 @@ const ServiziExtra = () => {
           </div>
         </div>
       </section>
+
+      {/* PhotoBooth Section */}
+      <PhotoBooth />
 
       {/* Contact Section */}
       <Contact />
