@@ -2,25 +2,43 @@ import { Layout } from "@/components/Layout";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Snowflake, Mountain, Music, Sun, Flame, Zap } from "lucide-react";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
-
-const features = [
-  { icon: Mountain, title: "Location Uniche", description: "Ski resort, chalet e rifugi d'alta quota" },
-  { icon: Sun, title: "Aperiski Perfetto", description: "Musica calda per tramonti sulla neve" },
-  { icon: Flame, title: "Party Energici", description: "Set che scaldano anche le notti più fredde" },
-  { icon: Zap, title: "Attrezzatura Pro", description: "Impianti che funzionano anche a -20°" },
-];
-
+const features = [{
+  icon: Mountain,
+  title: "Location Uniche",
+  description: "Ski resort, chalet e rifugi d'alta quota"
+}, {
+  icon: Sun,
+  title: "Aperiski Perfetto",
+  description: "Musica calda per tramonti sulla neve"
+}, {
+  icon: Flame,
+  title: "Party Energici",
+  description: "Set che scaldano anche le notti più fredde"
+}, {
+  icon: Zap,
+  title: "Attrezzatura Pro",
+  description: "Impianti che funzionano anche a -20°"
+}];
 const ApresSki = () => {
-  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-  const { ref: featuresRef, isVisible: featuresVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-
-  return (
-    <Layout
-      title="DJ Après Ski | Winter Party Roma - Nicolò Caratelli"
-      description="DJ per après ski e winter party. Musica ad alta quota per ski resort, chalet e rifugi. Creo l'atmosfera perfetta per i tuoi eventi invernali."
-      canonical="/servizi/apres-ski-winter-party"
-    >
+  const {
+    ref: heroRef,
+    isVisible: heroVisible
+  } = useScrollAnimation<HTMLElement>({
+    threshold: 0.1
+  });
+  const {
+    ref: featuresRef,
+    isVisible: featuresVisible
+  } = useScrollAnimation<HTMLElement>({
+    threshold: 0.1
+  });
+  const {
+    ref: contentRef,
+    isVisible: contentVisible
+  } = useScrollAnimation<HTMLElement>({
+    threshold: 0.1
+  });
+  return <Layout title="DJ Après Ski | Winter Party Roma - Nicolò Caratelli" description="DJ per après ski e winter party. Musica ad alta quota per ski resort, chalet e rifugi. Creo l'atmosfera perfetta per i tuoi eventi invernali." canonical="/servizi/apres-ski-winter-party">
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
@@ -32,31 +50,20 @@ const ApresSki = () => {
                 <Snowflake className="w-4 h-4" />
                 <span>Servizi DJ Roma</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Aperiski
-                <span className="block text-primary">& Winter Party</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Apré-ski
+& Winter Party<span className="block text-primary">& Winter Party</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                 DJ set ad alta quota per ski-resort e chalet. Musica dinamica per 
                 creare il perfetto après-ski o l'atmosfera giusta per i tuoi 
                 party invernali tra le montagne.
               </p>
-              <a
-                href="/#contact"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-              >
+              <a href="/#contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105">
                 Prenota la Stagione
               </a>
             </div>
-            <div
-              className="relative rounded-[40px] overflow-hidden shadow-2xl"
-              style={appleSlideStyles(heroVisible, "right", 200)}
-            >
-              <img
-                src={aperiskiImage}
-                alt="DJ set après ski montagna - Nicolò Caratelli winter party"
-                className="w-full h-full object-cover aspect-[4/5]"
-              />
+            <div className="relative rounded-[40px] overflow-hidden shadow-2xl" style={appleSlideStyles(heroVisible, "right", 200)}>
+              <img src={aperiskiImage} alt="DJ set après ski montagna - Nicolò Caratelli winter party" className="w-full h-full object-cover aspect-[4/5]" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
           </div>
@@ -66,29 +73,20 @@ const ApresSki = () => {
       {/* Features */}
       <section ref={featuresRef} className="py-24 bg-secondary overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h2
-            className="text-3xl font-bold text-foreground text-center mb-16"
-            style={appleRevealStyles(featuresVisible, 0)}
-          >
+          <h2 className="text-3xl font-bold text-foreground text-center mb-16" style={appleRevealStyles(featuresVisible, 0)}>
             L'Esperienza Winter
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className="glass-card rounded-2xl p-8 text-center"
-                style={{
-                  opacity: featuresVisible ? 1 : 0,
-                  transform: featuresVisible ? "translateY(0)" : "translateY(40px)",
-                  transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${100 + index * 80}ms`,
-                }}
-              >
+            {features.map((feature, index) => <div key={feature.title} className="glass-card rounded-2xl p-8 text-center" style={{
+            opacity: featuresVisible ? 1 : 0,
+            transform: featuresVisible ? "translateY(0)" : "translateY(40px)",
+            transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${100 + index * 80}ms`
+          }}>
                 <feature.icon className="w-10 h-10 text-primary mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground text-sm">{feature.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -137,10 +135,7 @@ const ApresSki = () => {
           <p className="text-muted-foreground mb-8">
             Le date migliori vanno veloce. Contattami per bloccare la tua.
           </p>
-          <a
-            href="/#contact"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
-          >
+          <a href="/#contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105">
             Contattami Ora
           </a>
         </div>
@@ -154,8 +149,6 @@ const ApresSki = () => {
           DJ chalet, musica rifugio, aperiski Roma.
         </p>
       </div>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default ApresSki;
