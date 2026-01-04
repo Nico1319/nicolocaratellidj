@@ -1,27 +1,12 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
-import { Camera, Video, Sparkles, Printer, Users, Heart } from "lucide-react";
+import { Camera, Video, Heart } from "lucide-react";
 import { Contact } from "@/components/Contact";
 import { PhotoBooth } from "@/components/PhotoBooth";
-import photoboothHeroImage from "@/assets/photobooth-hero.jpg";
 import fotografoEventiImage from "@/assets/fotografo-eventi.jpg";
 
 const services = [
-  {
-    icon: Sparkles,
-    title: "Mirror Photo Booth",
-    description: "Il Mirror Photo Booth è l'attrazione che trasforma ogni evento in un'esperienza interattiva e divertente. Uno specchio magico touchscreen che guida i tuoi ospiti attraverso un'esperienza fotografica unica, con filtri, cornici personalizzate e stampa immediata di foto ricordo in alta qualità.",
-    features: [
-      "Specchio interattivo touchscreen",
-      "Stampa immediata illimitata",
-      "Filtri e cornici personalizzabili",
-      "Props e accessori inclusi",
-      "Galleria digitale dell'evento",
-    ],
-    image: photoboothHeroImage,
-    color: "text-primary",
-  },
   {
     icon: Camera,
     title: "Fotografo Professionale",
