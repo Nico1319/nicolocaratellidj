@@ -50,7 +50,7 @@ const ApresSki = () => {
                 <Snowflake className="w-4 h-4" />
                 <span>Servizi DJ Roma</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Apré-ski & 
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Apré-ski &
 Winter Party<span className="block text-primary">Winter Party</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
