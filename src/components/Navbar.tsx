@@ -156,6 +156,19 @@ export function Navbar() {
               Produzioni
             </Link>
 
+            {/* Blog */}
+            <Link
+              to="/blog"
+              className={cn(
+                "px-4 py-2 text-xs font-medium rounded-full transition-all hover:bg-foreground/10",
+                location.pathname === "/blog"
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              Blog
+            </Link>
+
             {/* Contatti - Anchor link */}
             <a
               href={getAnchorHref("/#contact")}
