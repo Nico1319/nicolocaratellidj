@@ -96,7 +96,7 @@ export function PhotoBooth() {
         {/* Gallery Row */}
         <div className="grid grid-cols-2 gap-4 mb-16" style={appleRevealStyles(isVisible, 400)}>
           <div className="rounded-2xl overflow-hidden h-48 md:h-64">
-            <img alt="Stampa istantanea" src="/lovable-uploads/1fc9023f-ee22-4805-88a9-aacde01fee6d.jpg" className="w-full h-full hover:scale-105 transition-transform duration-500 object-fill" />
+            <img alt="Stampa istantanea" src="/lovable-uploads/1fc9023f-ee22-4805-88a9-aacde01fee6d.jpg" className="w-full h-full hover:scale-105 transition-transform duration-500 object-cover" />
           </div>
           <div className="rounded-2xl overflow-hidden h-48 md:h-64">
             <img alt="Divertimento al Photo Booth" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="/lovable-uploads/88501597-7366-457f-9d5c-1fbd0bde787f.jpg" />
