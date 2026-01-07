@@ -105,7 +105,7 @@ const faqs = [
   },
   {
     question: "Come viene gestita la pratica SIAE?",
-    answer: "Mi occupo personalmente di tutti gli adempimenti SIAE. Prima dell'evento compilerò il programma musicale e, dopo, invierò il borderò con le tracce effettivamente suonate. I costi SIAE variano in base alla tipologia di evento (privato/pubblico) e vengono sempre comunicati in anticipo nel preventivo.",
+    answer: "Per quanto riguarda la SIAE, la normativa prevede che il pagamento sia a carico del cliente.\nNon preoccuparti, però: non sarai solo. Ti fornirò tutto il supporto necessario per l'intera procedura. Sarò al tuo fianco per ogni chiarimento.",
   },
   {
     question: "È possibile richiedere una playlist personalizzata?",
