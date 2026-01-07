@@ -101,7 +101,7 @@ const faqs = [
   },
   {
     question: "Ti occupi tu dell'attrezzatura audio e luci?",
-    answer: "Assolutamente sì. Arrivo sempre con il mio setup professionale completo: consolle, casse, subwoofer, microfoni e un sistema luci base. Per eventi più grandi o location particolari, posso coordinare service audio-luci esterni di mia fiducia, garantendo sempre la massima qualità. Il tutto è incluso nel preventivo che ti fornirò.",
+    answer: "L'attrezzatura tecnica non sarà un tuo problema: fornirò io tutto il materiale necessario, configurato esattamente sulla base di quanto concordato nel preventivo. Dalla consolle all'impianto audio e luci, ogni dettaglio tecnico sarà definito in fase di pianificazione per adattarsi perfettamente alla location e alla tipologia di evento.",
   },
   {
     question: "Come viene gestita la pratica SIAE?",
