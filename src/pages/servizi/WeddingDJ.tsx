@@ -50,7 +50,7 @@ const WeddingDJ = () => {
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">DJ per Matrimoni a Roma e Provincia</h1>
+      <h1 className="sr-only">DJ per Matrimonio: La Regia Musicale Professionale per il tuo Giorno Speciale</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -59,16 +59,14 @@ const WeddingDJ = () => {
                 <span>Servizi DJ Roma</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Wedding DJ
-                <span className="block text-primary">Il Vostro Giorno Speciale</span>
+                DJ per Matrimonio
+                <span className="block text-primary">La Regia Musicale Professionale</span>
               </h2>
               
               {/* Sottosezioni H3 per SEO */}
               <div className="space-y-4 mb-8">
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  La colonna sonora del vostro matrimonio merita la massima attenzione. 
-                  Creo atmosfere uniche dalla cerimonia al party serale, trasformando 
-                  ogni momento in un ricordo indimenticabile.
+                  Il matrimonio non è una festa come le altre: è un evento che richiede una gestione tecnica e artistica impeccabile. Come DJ professionista per matrimoni, il mio obiettivo è creare un'esperienza sonora su misura che rispecchi la personalità degli sposi. La musica è il filo conduttore che unisce ogni momento, dalla commozione della cerimonia alla carica esplosiva del party finale. Affidarsi a un esperto significa non dover pensare a nulla, se non a godersi la festa.
                 </p>
               </div>
               <a
@@ -100,7 +98,7 @@ const WeddingDJ = () => {
             className="text-3xl font-bold text-foreground text-center mb-16"
             style={appleRevealStyles(featuresVisible, 0)}
           >
-            Perché Scegliermi per il Tuo Matrimonio
+            Musica per il Ricevimento: Dall'Aperitivo al Ballo degli Sposi
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -128,29 +126,29 @@ const WeddingDJ = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(storyVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              Un Matrimonio da Ricordare
+              Service Audio, Luci e Gestione Burocratica SIAE
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Il matrimonio è uno dei giorni più importanti della vostra vita, e la musica gioca 
-              un ruolo fondamentale nel creare l'atmosfera giusta. Come <strong className="text-foreground">
-              Wedding DJ a Roma</strong>, ho avuto l'onore di accompagnare musicalmente decine 
-              di coppie nel loro giorno speciale, e so quanto ogni dettaglio conti.
+              Ogni fase delle nozze ha il suo ritmo. Durante l'<strong className="text-foreground">aperitivo 
+              di benvenuto</strong>, propongo una selezione raffinata di musica Lounge, Nu Jazz e Deep House, 
+              ideale per creare un clima accogliente mentre gli ospiti sorseggiano il primo drink. Durante il 
+              banchetto, il volume resta discreto per permettere la conversazione, con un sottofondo musicale 
+              elegante. Il momento del taglio della torta e il primo ballo sono sottolineati da brani scelti 
+              insieme agli sposi, prima di dare il via alla vera festa.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Il mio approccio è totalmente personalizzato: inizio con un incontro conoscitivo 
-              dove parliamo dei vostri gusti musicali, dei ricordi legati a certe canzoni, 
-              e dell'atmosfera che volete creare. Dalla musica soft per la <strong className="text-foreground">
-              cerimonia</strong> alle hit che fanno scatenare tutti durante il <strong className="text-foreground">
-              party serale</strong>, ogni momento avrà la sua colonna sonora perfetta.
+              Un matrimonio di successo richiede anche un impatto visivo e tecnico di alto livello. 
+              Fornisco <strong className="text-foreground">impianti audio professionali</strong> (Bose, RCF) 
+              capaci di coprire diversi spazi della location, dal giardino esterno alla sala interna. 
+              Inoltre, offro un servizio di <strong className="text-foreground">illuminazione architetturale</strong> 
+              (uplighting) per creare atmosfere magiche e coinvolgenti.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Lavoro con attrezzatura professionale di alta qualità, garantendo un suono 
-              cristallino che rispetta sia i momenti più intimi che le esplosioni di energia 
-              della pista da ballo. Il mio obiettivo è semplice: farvi vivere il vostro 
-              matrimonio senza preoccupazioni, sapendo che la musica è in mani esperte.
+              Mi occupo anche del <strong className="text-foreground">supporto per il disbrigo delle pratiche 
+              SIAE</strong>, sollevando gli sposi da ogni preoccupazione burocratica.
             </p>
           </div>
         </div>

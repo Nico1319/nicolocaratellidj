@@ -44,7 +44,7 @@ const LoungeBar = () => {
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">DJ Set per Lounge Bar, Hotel e Aperitivi</h1>
+          <h1 className="sr-only">DJ Set per Lounge Bar, Rooftop e Aperitivi d'Elite</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -53,13 +53,11 @@ const LoungeBar = () => {
                 <span className="font-semibold uppercase tracking-wider">Top Focus Commerciale</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Lounge Bar
-                <span className="block text-primary">& Aperitivi</span>
+                DJ Set per Lounge Bar
+                <span className="block text-primary">Rooftop e Aperitivi d'Elite</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Specializzato in DJ set eleganti e di tendenza per Lounge Bar e Happy Hour. 
-                Creo l'atmosfera sonora che massimizza l'esperienza del cliente, 
-                aumentando il tempo di permanenza nel tuo locale.
+                L'aperitivo è il biglietto da visita di un locale. Un DJ set professionale per lounge bar non serve solo a intrattenere, ma a definire l'identità del brand e ad aumentare il tempo di permanenza dei clienti. La musica deve saper evolvere insieme alla serata: partendo da sonorità distese e soffuse per arrivare a ritmi più incalzanti che preparano al pre-serata. Collaboro con hotel di lusso, cocktail bar e rooftop per offrire un'esperienza sonora coerente e di tendenza.
               </p>
               <a
                 href="#contact"
@@ -118,28 +116,20 @@ const LoungeBar = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(contentVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              L'Arte dell'Aperitivo Musicale
+              Sound Design: Deep House, Soulful e Chillout
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              L'aperitivo è diventato un vero e proprio rituale nella cultura italiana, e Roma 
-              è la capitale di questa tradizione. Come <strong className="text-foreground">DJ 
-              specializzato in lounge bar</strong>, ho sviluppato una sensibilità unica per 
-              creare atmosfere che accompagnano perfettamente l'esperienza dell'happy hour.
+              La mia selezione musicale per l'aperitivo è frutto di una costante ricerca sonora. 
+              Spazio tra la <strong className="text-foreground">Deep House</strong> più sofisticata, 
+              il <strong className="text-foreground">Nu Jazz</strong>, il <strong className="text-foreground">
+              Soulful</strong> e la <strong className="text-foreground">Chillout</strong>, creando un 
+              tappeto sonoro che favorisce il relax e il networking.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              La mia selezione musicale spazia dalla <strong className="text-foreground">Deep House</strong> 
-              al <strong className="text-foreground">Nu Disco</strong>, dal <strong className="text-foreground">
-              Chillout</strong> al <strong className="text-foreground">Tropical House</strong>. Ogni set 
-              è calibrato sull'identità del locale e sul tipo di clientela, con un'attenzione 
-              particolare alla progressione dell'energia durante la serata.
-            </p>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Lavoro con i migliori lounge bar di Roma, portando un valore aggiunto concreto: 
-              la musica giusta aumenta il tempo di permanenza dei clienti e, di conseguenza, 
-              le consumazioni. È un investimento che ripaga già dalla prima serata.
+              Un bravo DJ da lounge bar sa quando restare in sottofondo e quando alzare il bpm 
+              per dare energia alla sala, interpretando costantemente il mood del pubblico presente.
             </p>
           </div>
 

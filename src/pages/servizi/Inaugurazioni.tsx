@@ -49,7 +49,7 @@ const Inaugurazioni = () => {
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">Eventi Corporate, Retail e Inaugurazioni</h1>
+          <h1 className="sr-only">DJ per Inaugurazioni, Store Opening ed Eventi Corporate</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -58,13 +58,11 @@ const Inaugurazioni = () => {
                 <span>Servizi DJ Roma</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Inaugurazioni
-                <span className="block text-primary">Commerciali</span>
+                DJ per Inaugurazioni
+                <span className="block text-primary">Store Opening ed Eventi Corporate</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Sound design mirato per il lancio di nuovi negozi, showroom, fiere 
-                ed eventi corporate. Massima visibilità e coinvolgimento per il 
-                tuo brand con la colonna sonora perfetta.
+                Il lancio di un nuovo punto vendita o un evento aziendale sono momenti cruciali per la comunicazione di un brand. La musica gioca un ruolo fondamentale nel marketing sensoriale, influenzando la percezione dei clienti e creando un ambiente dinamico e positivo. Come DJ per eventi aziendali, mi occupo di creare la colonna sonora perfetta per inaugurazioni, showroom e lanci di prodotto, attirando l'attenzione e rendendo il brand memorabile.
               </p>
               <a
                 href="#contact"
@@ -123,30 +121,24 @@ const Inaugurazioni = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(contentVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              Sound Design per il Successo
+              Valorizza il tuo Brand con un Intrattenimento Professionale
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Un'inaugurazione commerciale è molto più di un taglio del nastro: è il momento 
-              in cui il tuo brand si presenta al mondo. Come <strong className="text-foreground">
-              DJ per eventi corporate a Roma</strong>, so quanto la musica influenzi la 
-              percezione del pubblico e la memorabilità dell'esperienza.
+              Un evento commerciale richiede una gestione sonora attenta: dalla musica di 
+              sottofondo per le pubbliche relazioni ai momenti di picco durante la presentazione 
+              di un nuovo prodotto.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Il mio approccio al sound design commerciale parte dall'analisi del brand: 
-              qual è il tuo target? Qual è il messaggio che vuoi comunicare? Quale atmosfera 
-              rappresenta al meglio i tuoi valori? Sulla base di queste risposte, costruisco 
-              una <strong className="text-foreground">playlist personalizzata</strong> che 
-              diventa parte integrante della tua strategia di comunicazione.
+              Fornisco tutto il <strong className="text-foreground">supporto tecnico necessario</strong>, 
+              inclusi microfoni wireless per discorsi e impianti audio compatti ma potenti, ideali 
+              per negozi e gallerie commerciali.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Che si tratti dell'opening di un flagship store, di un lancio prodotto o di 
-              una fiera, garantisco un servizio professionale che include <strong className="text-foreground">
-              consulenza pre-evento</strong>, <strong className="text-foreground">attrezzatura 
-              audio di alta qualità</strong> e la capacità di adattarmi in tempo reale 
-              alle esigenze del momento. Il risultato? Un evento che i tuoi ospiti ricorderanno.
+              La <strong className="text-foreground">scaletta musicale</strong> viene studiata 
+              insieme al cliente per riflettere fedelmente i valori e il target dell'azienda.
             </p>
           </div>
 
