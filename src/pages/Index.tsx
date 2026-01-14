@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { LogoDivider } from "@/components/LogoDivider";
 import { Story } from "@/components/Story";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
@@ -42,6 +43,7 @@ const Index = () => {
       <main className="min-h-screen bg-background">
         <Navbar />
         <Hero />
+        <LogoDivider />
         <Story />
         <About />
         <Services />

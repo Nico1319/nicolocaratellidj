@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoDivider } from "@/components/LogoDivider";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Coffee, Music, TrendingUp, Clock, Sparkles, Wine } from "lucide-react";
 import { Contact } from "@/components/Contact";
@@ -80,6 +81,8 @@ const LoungeBar = () => {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* Benefits */}
       <section ref={benefitsRef} className="py-24 bg-secondary overflow-hidden">

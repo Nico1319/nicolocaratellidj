@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoDivider } from "@/components/LogoDivider";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Snowflake, Mountain, Music, Sun, Flame, Zap } from "lucide-react";
 import { Contact } from "@/components/Contact";
@@ -66,6 +67,8 @@ const ApresSki = () => {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* Features */}
       <section ref={featuresRef} className="py-24 bg-secondary overflow-hidden">

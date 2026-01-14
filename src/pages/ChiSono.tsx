@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoDivider } from "@/components/LogoDivider";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Music, Headphones, Radio, Disc, Award, Users } from "lucide-react";
 import { Contact } from "@/components/Contact";
@@ -71,6 +72,8 @@ const ChiSono = () => {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* Story Section */}
       <section ref={storyRef} className="py-24 bg-secondary overflow-hidden">
