@@ -126,7 +126,7 @@ const WeddingDJ = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(storyVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              Service Audio, Luci e Gestione Burocratica SIAE
+              Service Audio e Luci
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
