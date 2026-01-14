@@ -40,7 +40,7 @@ const ApresSki = () => {
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">Winter Party & Après-ski: Energia ad Alta Quota</h1>
+          <h1 className="sr-only">DJ per Apreski e Winter Party: L'Energia dei Party in Alta Quota</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -49,13 +49,11 @@ const ApresSki = () => {
                 <span>Servizi DJ Roma</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Aperiski &
-                <span className="block text-primary">Winter Party</span>
+                DJ per Apreski
+                <span className="block text-primary">e Winter Party</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                DJ set ad alta quota per ski-resort e chalet. Musica dinamica per 
-                creare il perfetto après-ski o l'atmosfera giusta per i tuoi 
-                party invernali tra le montagne.
+                Quando il sole inizia a calare sulle piste da sci, l'atmosfera si accende con l'Apreski. Organizzare un party in un rifugio o in uno chalet richiede un DJ con una carica unica, capace di coinvolgere una folla eterogenea e carica di adrenalina. Come specialista in Winter Party, porto l'energia dei grandi festival internazionali direttamente sulla neve, garantendo un divertimento senza pause per sciatori e amanti della montagna.
               </p>
               <a href="#contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105">
                 Prenota la Stagione
@@ -95,31 +93,21 @@ const ApresSki = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(contentVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              Musica che Scalda l'Inverno
+              Animazione e Musica per Rifugi e Chalet di Montagna
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              C'è qualcosa di magico nell'après-ski: il sole che tramonta sulle cime innevate, 
-              la stanchezza piacevole di una giornata sugli sci, e la voglia di festeggiare 
-              con un drink in mano. Come DJ specializzato in <strong className="text-foreground">
-              eventi invernali</strong>, creo la colonna sonora perfetta per questi momenti unici.
+              Il segreto di un Apreski indimenticabile è la capacità di mixare grandi successi, 
+              hit <strong className="text-foreground">Dance</strong>, <strong className="text-foreground">
+              EDM</strong> e brani che tutti possono cantare. Non è solo musica, è uno show che 
+              unisce animazione e selezione tecnica.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I miei set per après-ski e winter party sono pensati per costruire un'energia 
-              progressiva: si parte con atmosfere <strong className="text-foreground">lounge</strong> 
-              e <strong className="text-foreground">deep house</strong> per il tramonto, 
-              per poi crescere verso beat più energici man mano che la notte avanza. 
-              Il risultato è un viaggio musicale che accompagna gli ospiti dall'aperitivo 
-              fino all'ultima chiamata.
-            </p>
-
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Porto con me attrezzatura professionale testata per resistere alle basse 
-              temperature, garantendo performance impeccabili anche nelle condizioni più 
-              estreme. Che si tratti di uno chalet esclusivo o di un rifugio in quota, 
-              ho l'esperienza e l'equipaggiamento per trasformare ogni serata in un evento 
-              memorabile.
+              Grazie all'utilizzo di <strong className="text-foreground">attrezzatura professionale 
+              resistente alle basse temperature</strong>, garantisco una qualità audio impeccabile 
+              anche all'aperto, trasformando il tuo rifugio nella meta più ambita del comprensorio 
+              sciistico.
             </p>
           </div>
         </div>

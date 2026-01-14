@@ -49,7 +49,7 @@ const PartyPrivati = () => {
       {/* Hero */}
       <section ref={heroRef} className="pt-32 pb-20 bg-background overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <h1 className="sr-only">Feste Private, 18esimi e Anniversari a Roma</h1>
+          <h1 className="sr-only">DJ per Diciottesimi e Feste Private: Il Party che fa la Storia</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div style={appleSlideStyles(heroVisible, "left", 0)}>
@@ -58,13 +58,11 @@ const PartyPrivati = () => {
                 <span>Servizi DJ Roma</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Party Privati
-                <span className="block text-primary">Esclusivi</span>
+                DJ per Diciottesimi
+                <span className="block text-primary">e Feste Private</span>
               </h2>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Trasforma la tua festa in un evento leggendario. DJ set personalizzati 
-                per 18esimi, feste di laurea e compleanni. Playlist curata sui tuoi 
-                gusti per far ballare tutti, con impianto audio e luci professionali.
+                Compiere 18 anni è un momento unico che merita di essere festeggiato con un party leggendario. Se cerchi un DJ per diciottesimi che sappia cosa ballano i giovani oggi, sei nel posto giusto. Il mio servizio non è una semplice selezione di brani, ma una vera e propria serata da club: luci, effetti speciali e una selezione musicale che spacca. Dalla Trap al Reggaeton, dalla Urban alla Commerciale, porto in pista solo il meglio delle classifiche mondiali e dei trend di TikTok.
               </p>
               <a
                 href="#contact"
@@ -123,30 +121,24 @@ const PartyPrivati = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="space-y-8" style={appleRevealStyles(contentVisible, 0)}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-8">
-              Una Festa da Ricordare
+              Musica per Lauree, Compleanni e Feste Esclusive
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Ogni festa privata è un'occasione speciale che merita di essere celebrata 
-              nel modo giusto. Come <strong className="text-foreground">DJ specializzato 
-              in party privati a Roma</strong>, ho animato centinaia di eventi, dai 
-              18esimi esplosivi alle feste di laurea più eleganti.
+              Ogni festa privata ha la sua anima. Che tu stia festeggiando la <strong className="text-foreground">
+              laurea</strong>, un <strong className="text-foreground">compleanno importante</strong> (30, 40 
+              o 50 anni) o una ricorrenza speciale, adatto il mio stile alle tue esigenze.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Il mio segreto? Ascolto. Prima di ogni evento, mi confronto con te per 
-              capire i tuoi gusti musicali, le canzoni che non possono mancare, e 
-              l'atmosfera che vuoi creare. Costruisco una <strong className="text-foreground">
-              playlist personalizzata</strong> che riflette la tua personalità e fa 
-              ballare tutti i tuoi ospiti, dai più giovani ai più grandi.
+              Il mio setup include <strong className="text-foreground">console di ultima generazione</strong> 
+              e un <strong className="text-foreground">light show professionale</strong> con teste mobili 
+              e laser per trasformare qualsiasi sala in una vera discoteca.
             </p>
 
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Il servizio include impianto audio professionale, <strong className="text-foreground">
-              luci LED scenografiche</strong>, e la gestione di tutti i momenti speciali: 
-              dal taglio della torta al brindisi, dalle dediche alle sorprese. E se vuoi 
-              aggiungere un tocco in più, posso integrare servizi come il <strong className="text-foreground">
-              karaoke</strong> o il <strong className="text-foreground">photo booth</strong>.
+              La playlist è totalmente personalizzabile: dai grandi classici del passato alle hit del momento, 
+              per far ballare ogni tuo invitato fino all'ultima canzone.
             </p>
           </div>
 
