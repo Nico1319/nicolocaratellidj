@@ -35,7 +35,19 @@ interface LocalBusinessSchema {
   };
 }
 
-type SchemaType = PersonSchema | ProfessionalServiceSchema | LocalBusinessSchema;
+interface BlogPostingSchema {
+  type: "BlogPosting";
+  headline: string;
+  description: string;
+  datePublished: string;
+  author: {
+    name: string;
+    url: string;
+  };
+  image?: string;
+}
+
+type SchemaType = PersonSchema | ProfessionalServiceSchema | LocalBusinessSchema | BlogPostingSchema;
 
 interface JsonLdProps {
   schema: SchemaType;
@@ -99,6 +111,26 @@ export function JsonLd({ schema }: JsonLdProps) {
             "https://soundcloud.com/nicolocaratellidj",
             "https://www.youtube.com/@nicolocaratellidj",
           ],
+        };
+      
+      case "BlogPosting":
+        return {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: schema.headline,
+          description: schema.description,
+          datePublished: schema.datePublished,
+          author: {
+            "@type": "Person",
+            name: schema.author.name,
+            url: schema.author.url,
+          },
+          image: schema.image,
+          publisher: {
+            "@type": "Person",
+            name: "Nicolò Caratelli",
+            url: baseUrl,
+          },
         };
       
       default:
