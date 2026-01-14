@@ -3,10 +3,12 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import sitemap from "vite-plugin-sitemap";
-import { blogPosts } from "./src/data/blogPosts";
+
+// Import JSON directly for sitemap generation (no TypeScript processing needed)
+import blogPostsData from "./src/data/blogPosts.json";
 
 // Generate blog slugs for sitemap
-const blogSlugs = blogPosts.map((post) => `/blog/${post.slug}`);
+const blogSlugs = blogPostsData.map((post: { slug: string }) => `/blog/${post.slug}`);
 
 // Static routes
 const staticRoutes = [
