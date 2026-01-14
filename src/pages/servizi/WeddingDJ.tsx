@@ -72,7 +72,7 @@ const WeddingDJ = () => {
                 </p>
               </div>
               <a
-                href="/#contact"
+                href="#contact"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
               >
                 Richiedi Preventivo Gratuito

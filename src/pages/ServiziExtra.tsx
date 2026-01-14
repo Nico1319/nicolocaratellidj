@@ -118,7 +118,7 @@ const ServiziExtra = () => {
                   </ul>
 
                   <a
-                    href="/#contact"
+                    href="#contact"
                     className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-full hover:bg-primary/90 transition-all hover:scale-105"
                   >
                     Richiedi Info
