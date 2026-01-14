@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoDivider } from "@/components/LogoDivider";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Camera, Video, Heart } from "lucide-react";
 import { Contact } from "@/components/Contact";
@@ -82,6 +83,8 @@ const ServiziExtra = () => {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* Services */}
       <section ref={servicesRef} className="py-12 bg-background overflow-hidden">

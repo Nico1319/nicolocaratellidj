@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoDivider } from "@/components/LogoDivider";
 import { useScrollAnimation, appleRevealStyles, appleSlideStyles } from "@/hooks/useScrollAnimation";
 import { Music, Headphones, Radio, Disc, Play, ExternalLink } from "lucide-react";
 import { Contact } from "@/components/Contact";
@@ -95,6 +96,8 @@ const ProduzioniMusicali = () => {
           </div>
         </div>
       </section>
+
+      <LogoDivider />
 
       {/* Featured Tracks */}
       <section ref={tracksRef} className="py-24 bg-secondary overflow-hidden">

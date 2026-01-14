@@ -1,6 +1,7 @@
 import { Instagram, Music, Cloud, Youtube, Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
+import logoWhite from "@/assets/logo-white.png";
 
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/nicolocaratellidj", label: "Instagram" },
@@ -38,7 +39,11 @@ export function Footer() {
         >
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold text-foreground mb-4">Nicolò Caratelli</h3>
+            <img 
+              src={logoWhite} 
+              alt="Nicolò Caratelli DJ Logo" 
+              className="h-10 w-auto mb-4"
+            />
             <p className="text-muted-foreground text-sm mb-6">
               DJ & Producer professionista a Roma. Musica per matrimoni, eventi, 
               lounge bar e club.
