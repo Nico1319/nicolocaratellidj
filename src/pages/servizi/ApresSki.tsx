@@ -57,7 +57,7 @@ const ApresSki = () => {
                 creare il perfetto après-ski o l'atmosfera giusta per i tuoi 
                 party invernali tra le montagne.
               </p>
-              <a href="/#contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105">
+              <a href="#contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-4 rounded-full hover:bg-primary/90 transition-all hover:scale-105">
                 Prenota la Stagione
               </a>
             </div>
