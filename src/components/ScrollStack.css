@@ -11,6 +11,13 @@
 .scroll-stack-card {
   position: relative;
   width: 100%;
+  will-change: transform, filter;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: top center;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .scroll-stack-end {
