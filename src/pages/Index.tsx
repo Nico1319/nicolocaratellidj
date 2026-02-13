@@ -5,7 +5,7 @@ import { LogoDivider } from "@/components/LogoDivider";
 import { Story } from "@/components/Story";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
-
+import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { Music } from "@/components/Music";
 import { Social } from "@/components/Social";
 import { Contact } from "@/components/Contact";
@@ -44,13 +44,26 @@ const Index = () => {
         <Navbar />
         <Hero />
         <LogoDivider />
-        <Story />
-        <About />
-        <Services />
-        
-        <Music />
-        <Social />
-        <Contact />
+        <ScrollStack useWindowScroll itemDistance={80} itemStackDistance={25} baseScale={0.88} itemScale={0.02} blurAmount={2}>
+          <ScrollStackItem>
+            <Story />
+          </ScrollStackItem>
+          <ScrollStackItem>
+            <About />
+          </ScrollStackItem>
+          <ScrollStackItem>
+            <Services />
+          </ScrollStackItem>
+          <ScrollStackItem>
+            <Music />
+          </ScrollStackItem>
+          <ScrollStackItem>
+            <Social />
+          </ScrollStackItem>
+          <ScrollStackItem>
+            <Contact />
+          </ScrollStackItem>
+        </ScrollStack>
         <Footer />
         <WhatsAppButton />
       </main>
