@@ -1,25 +1,50 @@
 import { Play, ChevronDown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export function Hero() {
-  const [scrollY, setScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLImageElement>(null);
+  const rafRef = useRef<number | null>(null);
+
+  const updateParallax = useCallback(() => {
+    const scrollY = window.scrollY;
+    const parallaxY = scrollY * 0.4;
+    const contentOpacity = Math.max(0, 1 - scrollY / 600);
+    const contentScale = Math.max(0.8, 1 - scrollY / 3000);
+    const contentBlur = Math.min(10, scrollY / 80);
+
+    if (bgRef.current) {
+      bgRef.current.style.transform = `translate3d(0, ${parallaxY}px, 0) scale(1.1)`;
+    }
+    if (contentRef.current) {
+      contentRef.current.style.opacity = String(contentOpacity);
+      contentRef.current.style.transform = `scale(${contentScale}) translate3d(0, ${-scrollY * 0.1}px, 0)`;
+      contentRef.current.style.filter = `blur(${contentBlur}px)`;
+    }
+    if (scrollIndicatorRef.current) {
+      scrollIndicatorRef.current.style.opacity = String(contentOpacity);
+    }
+  }, []);
 
   useEffect(() => {
     setIsLoaded(true);
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  // Parallax calculations
-  const parallaxY = scrollY * 0.4;
-  const contentOpacity = Math.max(0, 1 - scrollY / 600);
-  const contentScale = Math.max(0.8, 1 - scrollY / 3000);
-  const contentBlur = Math.min(10, scrollY / 80);
+    const handleScroll = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        updateParallax();
+        rafRef.current = null;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [updateParallax]);
 
   return (
     <section
@@ -31,9 +56,9 @@ export function Hero() {
         <img
           ref={bgRef}
           alt="DJ Background"
-          className="w-full h-full object-cover scale-110 transition-transform duration-100"
+          className="w-full h-full object-cover will-change-transform"
           style={{
-            transform: `translateY(${parallaxY}px) scale(1.1)`,
+            transform: 'translate3d(0, 0, 0) scale(1.1)',
             opacity: 0.4,
           }}
           src="/lovable-uploads/a93832e9-6659-46a7-ba57-d7b70e083718.jpg"
@@ -44,12 +69,8 @@ export function Hero() {
 
       {/* Content with scroll effects */}
       <div
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-10"
-        style={{
-          opacity: contentOpacity,
-          transform: `scale(${contentScale}) translateY(${-scrollY * 0.1}px)`,
-          filter: `blur(${contentBlur}px)`,
-        }}
+        ref={contentRef}
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-10 will-change-[transform,opacity,filter]"
       >
         {/* Status Badge */}
         <div
@@ -137,13 +158,13 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div
+        ref={scrollIndicatorRef}
         className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-10 transition-all duration-1000 ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
         style={{
           filter: isLoaded ? "blur(0)" : "blur(5px)",
           transitionDelay: "1200ms",
-          opacity: contentOpacity,
         }}
       >
         <div className="flex flex-col items-center gap-2 animate-bounce">
