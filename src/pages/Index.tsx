@@ -50,6 +50,7 @@ const Index = () => {
         <Services />
         
         <Music />
+        <LatestRelease />
         <Social />
         <Contact />
         <Footer />
