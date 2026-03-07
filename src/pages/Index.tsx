@@ -7,6 +7,7 @@ import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 
 import { Music } from "@/components/Music";
+import { LatestRelease } from "@/components/LatestRelease";
 import { Social } from "@/components/Social";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
