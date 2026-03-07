@@ -4,24 +4,24 @@ import { useScrollAnimation, appleRevealStyles, appleScaleStyles } from "@/hooks
 const mixes = [
   {
     id: "01",
+    title: "Ossessione - Samurai Jay (Sanremo Remix)",
+    genre: "Afro House",
+    duration: "3 min",
+    url: "https://soundcloud.com/nicolocaratellidj/ossessione-samurai-jay-sanremo",
+  },
+  {
+    id: "02",
     title: "Le Canzoni (Afro Remix)",
     genre: "Afro House",
     duration: "3 min",
     url: "https://soundcloud.com/nicolocaratellidj/lecanzoniafroremix",
   },
   {
-    id: "02",
+    id: "03",
     title: "Pronto Come Va - The Kolors (Afro Remix)",
     genre: "Afro House",
     duration: "3 min",
     url: "https://soundcloud.com/nicolocaratellidj/pronto-come-va-the-kolors-afro-remix",
-  },
-  {
-    id: "03",
-    title: "Meet Me Halfway - Black Eyed Peas (Afro Remix)",
-    genre: "Afro House",
-    duration: "3 min",
-    url: "https://soundcloud.com/nicolocaratellidj/meet-me-halfway-black-eyed-peas-afro-remix-nicolo-caratelli",
   },
 ];
 
