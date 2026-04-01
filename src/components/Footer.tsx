@@ -108,13 +108,26 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div
-          className="pt-8 border-t border-border/20 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground"
+          className="pt-8 border-t border-border/20 flex flex-col items-center gap-4 text-xs text-muted-foreground"
           style={appleRevealStyles(isVisible, 200)}
         >
-          <p>© {currentYear} Nicolò Caratelli DJ. All rights reserved.</p>
-          <p>
-            DJ Roma • Musica Eventi • Service Audio Luci
-          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-border">•</span>
+            <Link to="/cookie-policy" className="hover:text-foreground transition-colors">
+              Cookie Policy
+            </Link>
+            <span className="text-border">•</span>
+            <Link to="/termini-di-servizio" className="hover:text-foreground transition-colors">
+              Termini di Servizio
+            </Link>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 w-full">
+            <p>© {currentYear} Nicolò Caratelli DJ. All rights reserved.</p>
+            <p>DJ Roma • Musica Eventi • Service Audio Luci</p>
+          </div>
         </div>
       </div>
     </footer>
