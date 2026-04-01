@@ -17,6 +17,10 @@ import PartyPrivati from "./pages/servizi/PartyPrivati";
 import ServiziExtra from "./pages/ServiziExtra";
 import ProduzioniMusicali from "./pages/ProduzioniMusicali";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import TermsOfService from "./pages/TermsOfService";
+import { CookieConsent } from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -40,9 +44,13 @@ const App = () => (
             <Route path="/servizi/party-privati-esclusivi" element={<PartyPrivati />} />
             <Route path="/servizi-extra" element={<ServiziExtra />} />
             <Route path="/produzioni-musicali" element={<ProduzioniMusicali />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/termini-di-servizio" element={<TermsOfService />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
