@@ -43,7 +43,6 @@ const App = () => (
             <Route path="/servizi/apres-ski-winter-party" element={<ApresSki />} />
             <Route path="/servizi/inaugurazioni-commerciali" element={<Inaugurazioni />} />
             <Route path="/servizi/party-privati-esclusivi" element={<PartyPrivati />} />
-            <Route path="/servizi-extra" element={<ServiziExtra />} />
             <Route path="/produzioni-musicali" element={<ProduzioniMusicali />} />
             <Route path="/dj-18esimi-roma" element={<Dj18esimiRoma />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

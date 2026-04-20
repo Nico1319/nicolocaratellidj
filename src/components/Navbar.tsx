@@ -19,8 +19,8 @@ const servicesLinks = [{
   href: "/servizi/party-privati-esclusivi",
   label: "Party Privati"
 }, {
-  href: "/servizi-extra",
-  label: "Servizi Extra"
+  href: "/dj-18esimi-roma",
+  label: "DJ 18esimi"
 }];
 
 // Navbar order: Home | Chi Sono | Servizi (Dropdown) | Produzioni | Contatti
