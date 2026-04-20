@@ -4,9 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import logoWhite from "@/assets/logo-white.png";
 const servicesLinks = [{
-  href: "/servizi/wedding-dj",
-  label: "Wedding DJ"
-}, {
   href: "/servizi/lounge-bar-aperitivi",
   label: "Lounge Bar & Aperitivi"
 }, {
