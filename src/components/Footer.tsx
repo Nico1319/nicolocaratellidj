@@ -13,12 +13,11 @@ const socialLinks = [
 const sitemapLinks = [
   { href: "/", label: "Home" },
   { href: "/chi-sono", label: "Chi Sono" },
-  { href: "/servizi/wedding-dj", label: "Wedding DJ" },
   { href: "/servizi/lounge-bar-aperitivi", label: "Lounge Bar & Aperitivi" },
   { href: "/servizi/apres-ski-winter-party", label: "Aperiski & Winter Party" },
   { href: "/servizi/inaugurazioni-commerciali", label: "Inaugurazioni" },
   { href: "/servizi/party-privati-esclusivi", label: "Party Privati" },
-  { href: "/servizi-extra", label: "Servizi Extra" },
+  { href: "/dj-18esimi-roma", label: "DJ 18esimi Roma" },
   { href: "/produzioni-musicali", label: "Produzioni Musicali" },
   { href: "/blog", label: "Blog" },
 ];
@@ -45,8 +44,8 @@ export function Footer() {
               className="h-10 w-auto mb-4"
             />
             <p className="text-muted-foreground text-sm mb-6">
-              DJ & Producer professionista a Roma. Musica per matrimoni, eventi, 
-              lounge bar e club.
+              DJ & Producer professionista a Roma. Musica per 18esimi, feste private, 
+              eventi, lounge bar e club.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (

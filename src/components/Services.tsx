@@ -1,10 +1,9 @@
-import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
+import { Coffee, Snowflake, Megaphone, PartyPopper, Cake } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
 import partyPrivatiImage from "@/assets/party-privati.jpg";
-import weddingDjImage from "@/assets/wedding-dj.jpg";
 import inaugurazioniImage from "@/assets/inaugurazioni.jpg";
 
 const services = [
@@ -46,24 +45,23 @@ const services = [
     icon: PartyPopper,
     title: "Party Privati Esclusivi",
     description:
-      "**Trasforma la tua festa in un evento leggendario.** DJ set personalizzati per 18esimi a Roma, feste di compleanno, lauree e party privati. Scopri il servizio dedicato ai diciottesimi nella pagina DJ per 18esimi Roma. Playlist curata sui tuoi gusti, impianto audio e light show professionale.",
+      "**Trasforma la tua festa in un evento leggendario.** DJ set personalizzati per feste di compleanno, lauree e party privati. Playlist curata sui tuoi gusti, impianto audio e light show professionale.",
     image: partyPrivatiImage,
     colSpan: "md:col-span-2",
     borderColor: "border-t-primary/30",
     iconColor: "text-primary",
     href: "/servizi/party-privati-esclusivi",
-    extraLink: { href: "/dj-18esimi-roma", label: "DJ per 18esimi Roma →" },
   },
   {
-    icon: HeartHandshake,
-    title: "Wedding DJ",
+    icon: Cake,
+    title: "DJ 18esimi Roma",
     description:
-      "**La colonna sonora del tuo giorno più bello.** Un servizio Wedding DJ di alta classe, discreto e professionale. Dalla musica soft per la cerimonia al DJ set energico per il party serale. Massima attenzione ai dettagli.",
-    image: weddingDjImage,
+      "**Il DJ perfetto per il tuo 18° compleanno a Roma.** Festa indimenticabile con musica su misura, luci ed energia. Scopri il servizio dedicato ai diciottesimi a Roma.",
+    image: partyPrivatiImage,
     colSpan: "md:col-span-3",
-    borderColor: "border-t-muted-foreground/30",
-    iconColor: "text-muted-foreground",
-    href: "/servizi/wedding-dj",
+    borderColor: "border-t-primary/50",
+    iconColor: "text-primary",
+    href: "/dj-18esimi-roma",
   },
 ];
 

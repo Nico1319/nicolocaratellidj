@@ -7,28 +7,25 @@ import { Contact } from "@/components/Contact";
 
 const tracks = [
   {
-    title: "Summer Vibes Remix",
+    title: "Ossessione - Samurai Jay (Sanremo Remix)",
     type: "Remix",
-    genre: "Deep House",
+    genre: "Afro House",
+    year: "2025",
+    url: "https://soundcloud.com/nicolocaratellidj/ossessione-samurai-jay-sanremo",
+  },
+  {
+    title: "Le Canzoni (Afro Remix)",
+    type: "Remix",
+    genre: "Afro House",
     year: "2024",
+    url: "https://soundcloud.com/nicolocaratellidj/lecanzoniafroremix",
   },
   {
-    title: "Night Drive",
-    type: "Original",
-    genre: "Tech House",
+    title: "Pronto Come Va - The Kolors (Afro Remix)",
+    type: "Remix",
+    genre: "Afro House",
     year: "2024",
-  },
-  {
-    title: "Roma Sunset",
-    type: "Original",
-    genre: "Nu Disco",
-    year: "2023",
-  },
-  {
-    title: "Club Essential Mix",
-    type: "Mashup",
-    genre: "House",
-    year: "2023",
+    url: "https://soundcloud.com/nicolocaratellidj/pronto-come-va-the-kolors-afro-remix",
   },
 ];
 
@@ -109,29 +106,42 @@ const ProduzioniMusicali = () => {
             Produzioni in Evidenza
           </h2>
           
-          <div className="space-y-4">
+          <div className="space-y-6 mb-12">
             {tracks.map((track, index) => (
               <div
                 key={track.title}
-                className="glass-card rounded-2xl p-6 flex items-center justify-between gap-4 group"
+                className="glass-card rounded-2xl p-4 md:p-6 group"
                 style={{
                   opacity: tracksVisible ? 1 : 0,
                   transform: tracksVisible ? "translateX(0)" : "translateX(-40px)",
                   transition: `all 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${100 + index * 80}ms`,
                 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                    <Music className="w-6 h-6 text-primary" />
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                      <Music className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-foreground">{track.title}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {track.type} • {track.genre}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-foreground">{track.title}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {track.type} • {track.genre}
-                    </p>
-                  </div>
+                  <span className="text-sm text-muted-foreground hidden md:block">{track.year}</span>
                 </div>
-                <span className="text-sm text-muted-foreground">{track.year}</span>
+                <div className="rounded-xl overflow-hidden">
+                  <iframe
+                    width="100%"
+                    height="120"
+                    scrolling="no"
+                    frameBorder="no"
+                    allow="autoplay"
+                    title={track.title}
+                    src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(track.url)}&color=%23ffffff&inverse=true&auto_play=false&show_user=true`}
+                  />
+                </div>
               </div>
             ))}
           </div>
