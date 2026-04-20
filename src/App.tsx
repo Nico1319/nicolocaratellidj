@@ -16,6 +16,7 @@ import Inaugurazioni from "./pages/servizi/Inaugurazioni";
 import PartyPrivati from "./pages/servizi/PartyPrivati";
 import ServiziExtra from "./pages/ServiziExtra";
 import ProduzioniMusicali from "./pages/ProduzioniMusicali";
+import Dj18esimiRoma from "./pages/Dj18esimiRoma";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/servizi/party-privati-esclusivi" element={<PartyPrivati />} />
             <Route path="/servizi-extra" element={<ServiziExtra />} />
             <Route path="/produzioni-musicali" element={<ProduzioniMusicali />} />
+            <Route path="/dj-18esimi-roma" element={<Dj18esimiRoma />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-di-servizio" element={<TermsOfService />} />

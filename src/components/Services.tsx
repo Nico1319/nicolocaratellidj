@@ -46,12 +46,13 @@ const services = [
     icon: PartyPopper,
     title: "Party Privati Esclusivi",
     description:
-      "**Trasforma la tua festa in un evento leggendario.** DJ set personalizzati per 18esimi, feste di laurea e compleanni. Playlist curata sui tuoi gusti per far ballare tutti, con un impianto audio professionale.",
+      "**Trasforma la tua festa in un evento leggendario.** DJ set personalizzati per 18esimi a Roma, feste di compleanno, lauree e party privati. Scopri il servizio dedicato ai diciottesimi nella pagina DJ per 18esimi Roma. Playlist curata sui tuoi gusti, impianto audio e light show professionale.",
     image: partyPrivatiImage,
     colSpan: "md:col-span-2",
     borderColor: "border-t-primary/30",
     iconColor: "text-primary",
     href: "/servizi/party-privati-esclusivi",
+    extraLink: { href: "/dj-18esimi-roma", label: "DJ per 18esimi Roma →" },
   },
   {
     icon: HeartHandshake,

@@ -21,7 +21,7 @@ const Index = () => {
         <title>Nicolò Caratelli DJ Roma | Musica Matrimoni, Eventi & Club</title>
         <meta 
           name="description" 
-          content="DJ professionista a Roma per matrimoni, eventi, lounge bar e club. Scopri i servizi di Nicolò Caratelli: musica, service audio luci, photo booth e produzioni." 
+          content="Nicolò Caratelli DJ – DJ professionista per 18esimi, feste private e eventi a Roma. Prenota il tuo DJ per un 18° compleanno indimenticabile." 
         />
         <link rel="canonical" href="https://nicolocaratellidj.it/" />
         <meta property="og:title" content="Nicolò Caratelli DJ Roma | Musica Matrimoni, Eventi & Club" />
