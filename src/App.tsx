@@ -14,7 +14,6 @@ import LoungeBar from "./pages/servizi/LoungeBar";
 import ApresSki from "./pages/servizi/ApresSki";
 import Inaugurazioni from "./pages/servizi/Inaugurazioni";
 import PartyPrivati from "./pages/servizi/PartyPrivati";
-import ServiziExtra from "./pages/ServiziExtra";
 import ProduzioniMusicali from "./pages/ProduzioniMusicali";
 import Dj18esimiRoma from "./pages/Dj18esimiRoma";
 import NotFound from "./pages/NotFound";
@@ -43,7 +42,6 @@ const App = () => (
             <Route path="/servizi/apres-ski-winter-party" element={<ApresSki />} />
             <Route path="/servizi/inaugurazioni-commerciali" element={<Inaugurazioni />} />
             <Route path="/servizi/party-privati-esclusivi" element={<PartyPrivati />} />
-            <Route path="/servizi-extra" element={<ServiziExtra />} />
             <Route path="/produzioni-musicali" element={<ProduzioniMusicali />} />
             <Route path="/dj-18esimi-roma" element={<Dj18esimiRoma />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
