@@ -1,5 +1,5 @@
 import { Coffee, Snowflake, Megaphone, PartyPopper, HeartHandshake } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useScrollAnimation, appleRevealStyles } from "@/hooks/useScrollAnimation";
 import aperiskiImage from "@/assets/aperiski-mountain.jpg";
 import loungeAperitivoImage from "@/assets/lounge-aperitivo.jpg";
@@ -69,6 +69,7 @@ const services = [
 
 export function Services() {
   const { ref: sectionRef, isVisible } = useScrollAnimation<HTMLElement>({ threshold: 0.05 });
+  const navigate = useNavigate();
 
   return (
     <section ref={sectionRef} id="services" className="py-32 bg-secondary overflow-hidden">
@@ -125,9 +126,24 @@ export function Services() {
                 <p className="text-muted-foreground leading-snug text-sm md:text-base max-w-lg">
                   {service.description.replace(/\*\*/g, "")}
                 </p>
-                <span className="mt-4 text-primary text-sm font-semibold group-hover:underline">
-                  Scopri di più →
-                </span>
+                <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+                  <span className="text-primary text-sm font-semibold group-hover:underline">
+                    Scopri di più →
+                  </span>
+                  {(service as typeof service & { extraLink?: { href: string; label: string } }).extraLink && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        navigate((service as typeof service & { extraLink: { href: string; label: string } }).extraLink.href);
+                      }}
+                      className="text-primary text-sm font-semibold underline-offset-4 hover:underline"
+                    >
+                      {(service as typeof service & { extraLink: { href: string; label: string } }).extraLink.label}
+                    </button>
+                  )}
+                </div>
               </div>
             </Link>
           ))}
