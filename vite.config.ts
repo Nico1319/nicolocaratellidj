@@ -7,24 +7,26 @@ import sitemap from "vite-plugin-sitemap";
 // Import JSON directly for sitemap generation (no TypeScript processing needed)
 import blogPostsData from "./src/data/blogPosts.json";
 
-// Generate blog slugs for sitemap
+// Blog post routes (dynamic)
 const blogSlugs = blogPostsData.map((post: { slug: string }) => `/blog/${post.slug}`);
 
-// Static routes
+// Routes must match src/App.tsx <Route path=...> exactly.
+// The sitemap plugin automatically adds "/" from the `hostname` option,
+// so we do NOT include "/" here (avoids duplicate root URL).
 const staticRoutes = [
-  "/",
   "/blog",
   "/chi-sono",
-  "/servizi/wedding-dj",
   "/servizi/lounge-bar-aperitivi",
   "/servizi/apres-ski-winter-party",
   "/servizi/inaugurazioni-commerciali",
   "/servizi/party-privati-esclusivi",
-  "/servizi-extra",
   "/produzioni-musicali",
+  "/dj-18esimi-roma",
+  "/privacy-policy",
+  "/cookie-policy",
+  "/termini-di-servizio",
 ];
 
-// All routes including dynamic blog posts
 const allRoutes = [...staticRoutes, ...blogSlugs];
 
 // https://vitejs.dev/config/
@@ -42,7 +44,8 @@ export default defineConfig(({ mode }) => ({
       dynamicRoutes: allRoutes,
       changefreq: "weekly",
       lastmod: new Date(),
-      priority: 0.8,
+      priority: 0.7,
+      readable: true,
       exclude: ["/404"],
       outDir: "dist",
       generateRobotsTxt: false,

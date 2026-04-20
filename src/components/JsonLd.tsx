@@ -66,10 +66,8 @@ export function JsonLd({ schema }: JsonLdProps) {
           jobTitle: schema.jobTitle,
           url: schema.url,
           sameAs: schema.sameAs || [
-            "https://www.instagram.com/nicolocaratellidj",
-            "https://www.tiktok.com/@nicolocaratellidj",
-            "https://soundcloud.com/nicolocaratellidj",
-            "https://www.youtube.com/@nicolocaratellidj",
+            "https://www.instagram.com/nicolo.caratelli",
+            "https://www.mixcloud.com/nicolocaratelli",
           ],
           description: schema.description,
         };
@@ -106,10 +104,8 @@ export function JsonLd({ schema }: JsonLdProps) {
             addressCountry: schema.address?.country || "IT",
           },
           sameAs: [
-            "https://www.instagram.com/nicolocaratellidj",
-            "https://www.tiktok.com/@nicolocaratellidj",
-            "https://soundcloud.com/nicolocaratellidj",
-            "https://www.youtube.com/@nicolocaratellidj",
+            "https://www.instagram.com/nicolo.caratelli",
+            "https://www.mixcloud.com/nicolocaratelli",
           ],
         };
       
