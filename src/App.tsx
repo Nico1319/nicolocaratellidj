@@ -14,7 +14,6 @@ import LoungeBar from "./pages/servizi/LoungeBar";
 import ApresSki from "./pages/servizi/ApresSki";
 import Inaugurazioni from "./pages/servizi/Inaugurazioni";
 import PartyPrivati from "./pages/servizi/PartyPrivati";
-import ServiziExtra from "./pages/ServiziExtra";
 import ProduzioniMusicali from "./pages/ProduzioniMusicali";
 import Dj18esimiRoma from "./pages/Dj18esimiRoma";
 import NotFound from "./pages/NotFound";
